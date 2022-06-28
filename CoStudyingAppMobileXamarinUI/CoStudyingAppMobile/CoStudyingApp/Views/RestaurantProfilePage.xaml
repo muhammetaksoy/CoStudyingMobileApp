@@ -1,0 +1,647 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="YeatyAppMobile.Views.RestaurantProfilePage">
+    <ContentPage.Content>
+        
+        
+        
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+
+            <Grid HorizontalOptions="Center" x:Name="stackLoading" VerticalOptions="CenterAndExpand" IsVisible="False"
+                             Padding="5" BackgroundColor="Transparent"  Margin="0,0,0,120"  >
+                <lottie:AnimationView x:Name="lottieLoading" Animation="loadingCircles.json" AutoPlay="True" 
+                              HeightRequest="200" WidthRequest="200" RepeatMode="Infinite"
+                                      VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></lottie:AnimationView>
+
+
+            </Grid>
+
+            <!--<StackLayout Orientation="Horizontal" Margin="14,24,14,16" x:Name="stackNavigation">
+
+                <Frame x:Name="frameBackButton" BackgroundColor="Transparent" Padding="6" CornerRadius="3" HorizontalOptions="Start">
+
+
+                    <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left"
+                           FontSize="22" TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="Center"
+                           VerticalOptions="Center"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+
+                </Frame>
+
+            </StackLayout>-->
+
+
+            <Grid x:Name="mainGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  IsVisible="False">
+
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+
+                <ScrollView x:Name="mainScrollView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never" Grid.RowSpan="2" Grid.Row="0" Padding="0,0,0,0">
+
+                    <StackLayout>
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,0,0,16" >
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+
+
+                            <CarouselView x:Name="carouselViewSlide"  Grid.Row="0" Grid.RowSpan="2"
+                                               Grid.Column="0" Grid.ColumnSpan="3" CurrentItemChanged="carouselViewSlide_CurrentItemChanged"
+                                      HeightRequest="300" HorizontalOptions="FillAndExpand" VerticalOptions="Start"  >
+
+                                <CarouselView.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Frame  CornerRadius="0" IsClippedToBounds="True"  HasShadow="False"
+                                            BindingContext="{Binding .}" BackgroundColor="{StaticResource defaultShadedWhiteColor}"
+                                      HeightRequest="300" HorizontalOptions="FillAndExpand" Padding="0" Margin="0" >
+                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+
+                                                <Image HeightRequest="300" Aspect="AspectFill" Grid.Row="0" Grid.RowSpan="2"
+                                                       HorizontalOptions="FillAndExpand" Source="{Binding PhotoPath}"></Image>
+
+                                                <!--<Frame Grid.Row="1" Margin="0" HorizontalOptions="FillAndExpand" HeightRequest="60" Padding="0"
+                                                       BackgroundColor="#363636" Opacity="0.45"></Frame>
+                                        <Frame Grid.Row="1" Margin="0" HorizontalOptions="FillAndExpand" HeightRequest="60" Padding="0"
+                                                       BackgroundColor="Transparent" Opacity="1">
+                                            <Label Text="{Binding PhotoPathTitle}" TextColor="White" HorizontalOptions="StartAndExpand" 
+                                                           Margin="6,0,0,0" VerticalOptions="CenterAndExpand" FontSize="14" FontFamily="CustomBold"></Label>
+
+
+                                        </Frame>-->
+                                            </Grid>
+
+
+                                        </Frame>
+                                    </DataTemplate>
+                                </CarouselView.ItemTemplate>
+                            </CarouselView>
+
+                            <Frame HeightRequest="26" Padding="0" CornerRadius="13"  HasShadow="False"
+                               WidthRequest="26" BackgroundColor="#363636" Opacity="0.7" IsClippedToBounds="True"
+                               Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="6,0,0,0">
+
+                                <Label Text="chevron-left" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16"
+                                   FontFamily="{StaticResource FontAwesomeLight}"></Label>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="tapPrevious" Tapped="tapPrevious_Tapped"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+
+                            </Frame>
+                            <Frame HeightRequest="26" Padding="0" CornerRadius="13"  HasShadow="False"
+                               WidthRequest="26" BackgroundColor="#363636" Opacity="0.7" IsClippedToBounds="True"
+                               Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Margin="0,0,6,0">
+
+                                <Label Text="chevron-right" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16"
+                                   FontFamily="{StaticResource FontAwesomeLight}"></Label>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="tapNext" Tapped="tapNext_Tapped"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+
+                            </Frame>
+                            <Frame CornerRadius="6" Padding="12,6,12,6" Opacity="0.6" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,8,12,6" HorizontalOptions="EndAndExpand" IsVisible="True"
+                                   VerticalOptions="StartAndExpand" BackgroundColor="{StaticResource defaultBlackColor}" HasShadow="False" Grid.Row="1">
+                                <Label Text="3/5" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12" FontFamily="CustomBold"
+                                       TextColor="White"  IsVisible="True" Opacity="0"></Label>
+                            </Frame>
+                            <Frame CornerRadius="6" Padding="12,6,12,6" Opacity="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,8,12,6" HorizontalOptions="EndAndExpand" IsVisible="True"
+                                   VerticalOptions="StartAndExpand" BackgroundColor="Transparent" HasShadow="False" Grid.Row="1">
+                                <Label Text="3/5" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12" FontFamily="CustomBold"
+                                       TextColor="White" x:Name="lblSlideIndicator" ></Label>
+                            </Frame>
+                            <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="12,10,12,6" HorizontalOptions="End" VerticalOptions="Start" Orientation="Horizontal" Spacing="16"
+                                >
+
+                                <Frame HeightRequest="42" WidthRequest="42" CornerRadius="21" 
+                               IsClippedToBounds="True" HorizontalOptions="End" Padding="0"
+                               BackgroundColor="{StaticResource defaultWhiteColor}" >
+
+                                    <Label FontFamily="{StaticResource FontAwesomeLight}" Text="share-alt" TextColor="{StaticResource defaultFoggyColor}"
+                                   HorizontalOptions="Center" VerticalOptions="Center" Margin="0,4,4,0" FontSize="16" ></Label>
+
+                                </Frame>
+
+
+                                <Frame HeightRequest="42" WidthRequest="42" CornerRadius="21" 
+                               IsClippedToBounds="True" HorizontalOptions="End" Padding="0"
+                               BackgroundColor="{StaticResource defaultWhiteColor}" >
+
+                                    <Label FontFamily="{StaticResource FontAwesomeRegular}" x:Name="lblHeart"
+                                           Text="heart" TextColor="{StaticResource defaultRedColor}"
+                                   HorizontalOptions="Center" VerticalOptions="Center" Margin="0,4,0,0" FontSize="16" ></Label>
+
+
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tapFavorite" Tapped="tapFavorite_Tapped"></TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+
+                                </Frame>
+
+
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="12,10,12,6" HorizontalOptions="Start" VerticalOptions="Start" Orientation="Horizontal" Spacing="16"
+                                >
+
+
+                                <Frame HeightRequest="42" WidthRequest="42" CornerRadius="21" 
+                               IsClippedToBounds="True" HorizontalOptions="Start" Padding="0"
+                               BackgroundColor="{StaticResource defaultWhiteColor}" >
+
+                                    <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left" TextColor="{StaticResource defaultFoggyColor}"
+                                   HorizontalOptions="Center" VerticalOptions="Center" Margin="0,4,0,0" FontSize="16" ></Label>
+
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped_1"></TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+
+                                </Frame>
+
+
+
+                            </StackLayout>
+
+
+                        </Grid>
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal" Margin="14,4,14,0"
+                                 Spacing="4">
+
+
+                            <Label Text="Del'la Carte Cafe" x:Name="lblRestaurantName"
+                               FontSize="26" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomBold"
+                               ></Label>
+
+
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal" Margin="14,2,14,4"
+                                 Spacing="4">
+
+                            <Label Text="star" TextColor="{StaticResource defaultRedColor}" VerticalOptions="Center" FontSize="13"
+                               FontFamily="{StaticResource FontAwesomeSolid}"></Label>
+
+                            <Label Text="4.25" FontSize="12" x:Name="lblAverageRate"
+                               TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomMedium"></Label>
+                            <Label Text="(63 reviews)" x:Name="lblReviewsCount"
+                               FontSize="12" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomMedium"></Label>
+                            <Label Text="map-marker-alt" TextColor="{StaticResource defaultBlackColor}" VerticalOptions="Center" FontSize="13"
+                               FontFamily="{StaticResource FontAwesomeLight}" Margin="6,0,0,0"></Label>
+
+                            <Label Text="İstanbul, Bakırköy" x:Name="lblCityDistrict"
+                               FontSize="12" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomMedium"
+                               ></Label>
+
+                            <Label Text="Şu anda açık" x:Name="lblisOpen" FontSize="12" TextColor="#006301" FontFamily="CustomMedium"
+                           Margin="6,0,0,0"    ></Label>
+
+
+
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal" Margin="14,14,14,4"
+                                 Spacing="32">
+
+                            <StackLayout HorizontalOptions="Start" VerticalOptions="Start" 
+                                 Spacing="4">
+
+                                <Label Text="Mutfak türü" FontSize="16" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomBold"
+                               ></Label>
+                                <Label Text="Kahve, kahvaltı, tatlı" x:Name="lblKitchenType"
+                                   FontSize="12" TextColor="{StaticResource defaultFoggyColor}" FontFamily="CustomMedium"
+                               ></Label>
+
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="Start" VerticalOptions="Start" 
+                                 Spacing="4">
+
+                                <Label Text="Ortalama tutar" FontSize="16" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomBold"
+                               ></Label>
+                                <Label Text="₺120 iki kişi için (ortalama)" 
+                                   x:Name="lblAverageCost" FontSize="12" TextColor="{StaticResource defaultFoggyColor}" FontFamily="CustomMedium"
+                               ></Label>
+
+                            </StackLayout>
+
+
+
+                        </StackLayout>
+
+                        <StackLayout x:Name="stackSectionProducts" Margin="12,20,0,0" HorizontalOptions="FillAndExpand" IsVisible="False" Opacity="0">
+                            <StackLayout Orientation="Horizontal" Margin="0,8,12,6">
+
+                                <Label FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="18"
+                               x:Name="lblHeaderSection3"
+                           Text="Yeaty puanlarınız ile ödeyin" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+                                </Label>
+                                <Label FontFamily="CustomBold" TextColor="{StaticResource defaultFoggyColor}" FontSize="10"
+                           Text="Tüm menüye gözat" HorizontalOptions="EndAndExpand" VerticalOptions="Center"></Label>
+                            </StackLayout>
+                            <Label FontFamily="CustomMedium" TextColor="{StaticResource defaultFoggyColor}" FontSize="12.5" 
+                           Margin="0,0,12,0" x:Name="lblSubHeaderSection3"
+                           Text="De'la Carte Cafe mekanında seçili ürünleri Yeaty puanlarınız ile ödeyin. Ardından oluşacak QR Kodu mekandaki görevliye göstermeniz yeterli olacaktır." 
+                           HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Label>
+
+
+                            <CollectionView ItemsSource="{Binding .}" HorizontalOptions="Center" x:Name="collectionView2"
+                                    HorizontalScrollBarVisibility="Never" 
+                                    Margin="0,8,0,2" HeightRequest="240"
+                                                        ItemsLayout="HorizontalList"
+                                                        IsVisible="True"    >
+
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="5,0,0,0" BindingContext="{Binding .}">
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <Frame HeightRequest="200" WidthRequest="200" Padding="0" CornerRadius="3" IsClippedToBounds="True"
+                                           BackgroundColor="Transparent" Grid.Row="0" HorizontalOptions="Center">
+
+                                                <Image Source="{Binding ProductImageUrl}" HeightRequest="280"
+                                               WidthRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                               Aspect="AspectFill"></Image>
+
+                                            </Frame>
+                                            <!--<Frame HeightRequest="28" WidthRequest="42" CornerRadius="3" 
+                                           IsClippedToBounds="True" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"
+                                           Margin="12,12,0,0" Padding="0"
+                                           BackgroundColor="{StaticResource defaultBlackColor}" Opacity="0.7" Grid.Row="0"></Frame>-->
+                                            <Frame HeightRequest="28" WidthRequest="42" CornerRadius="3" 
+                                           IsClippedToBounds="True" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
+                                           Margin="0,0,12,12" Padding="0"
+                                           BackgroundColor="{StaticResource defaultShadedWhiteColor}" Opacity="1" Grid.Row="0">
+
+                                                <StackLayout HorizontalOptions="CenterAndExpand" 
+                                                     Orientation="Horizontal" Spacing="0"
+                                                     VerticalOptions="CenterAndExpand">
+                                                    <Label TextColor="{StaticResource defaultFoggyColor}" FontFamily="CustomBold">
+
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span FontSize="13" FontFamily="CustomBold" Text="{Binding ProductPriceStr}"></Span>
+                                                                <Span FontSize="10.5" FontFamily="CustomBold" Text=" ₺"></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+
+                                                    </Label>
+                                                    <!--<Label TextColor="{StaticResource defaultWhiteColor}" VerticalOptions="Center" FontFamily="CustomBold"
+                                               Text="{Binding ProductPriceStr}" FontSize="10"></Label>
+                                            <Label TextColor="{StaticResource defaultWhiteColor}" FontFamily="CustomBold"  VerticalOptions="Center"
+                                               Text="₺" FontSize="8"></Label>-->
+                                                </StackLayout>
+
+                                            </Frame>
+                                            <Frame Padding="8" CornerRadius="3" BackgroundColor="Transparent"
+                                           BindingContext="{Binding .}" 
+                                           VerticalOptions="StartAndExpand"
+                                           Grid.Row="0" Margin="0,10,10,0" HorizontalOptions="EndAndExpand">
+                                                <Label FontFamily="{Binding favoriteIconFontFamily}" FontSize="24" HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                          Text="heart" TextColor="{StaticResource defaultWhiteColor}">
+
+
+                                                </Label>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer x:Name="tapFavv" Tapped="tapFavv_Tapped"></TapGestureRecognizer>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+
+                                            <StackLayout Grid.Row="1" HorizontalOptions="StartAndExpand" Spacing="3">
+
+                                                <Label TextColor="{StaticResource defaultBlackColor}" 
+                                               FontSize="12.5"
+                                               FontFamily="CustomBold"
+                                               Text="{Binding ProductName}"></Label>
+
+
+                                            </StackLayout>
+
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer x:Name="tapSelectItem" Tapped="tapSelectItem_Tapped"></TapGestureRecognizer>
+                                            </Grid.GestureRecognizers>
+
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+
+
+                            </CollectionView>
+
+
+
+                        </StackLayout>
+
+                        <StackLayout x:Name="stackYeatyCampaigns" HorizontalOptions="FillAndExpand" Margin="12,12,0,0" IsVisible="False"
+                                     Opacity="0"
+                                     >
+
+                            <StackLayout Orientation="Horizontal" Margin="0,0,12,6">
+
+                                <Label FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="18"
+                               x:Name="lblHeaderSection2"
+                           Text="Yeaty özel kampanyaları" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+                                </Label>
+                               
+                            </StackLayout>
+                            <Label FontFamily="CustomMedium" TextColor="{StaticResource defaultBlackColor}" FontSize="12.5" 
+                           Margin="0,0,12,0"
+                           Text="Tek tıkla oluşturucağanız QR Kodu görevliye göstererek Yeaty avantajlarından faydalanın. İşte bu kadar basit!" 
+                           HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Label>
+                            <CollectionView ItemsSource="{Binding .}" HorizontalOptions="Center" x:Name="collectionViewCampaigns"
+                                    HorizontalScrollBarVisibility="Never" 
+                                    Margin="0,8,0,2" HeightRequest="210"
+                                                        ItemsLayout="HorizontalList"
+                                                        IsVisible="True"    >
+
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="5,0,0,0" BindingContext="{Binding .}" WidthRequest="200">
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <Frame HeightRequest="200" WidthRequest="200" Padding="0" CornerRadius="3" IsClippedToBounds="True"
+                                           BackgroundColor="Transparent" Grid.Row="0" HorizontalOptions="Center">
+
+                                                <Image Source="{Binding CardPhotoUrl}" HeightRequest="280"
+                                               WidthRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                               Aspect="AspectFill"></Image>
+
+                                            </Frame>
+                                            <Frame HeightRequest="200" WidthRequest="200" Padding="0" CornerRadius="3" IsClippedToBounds="True"
+                                           BackgroundColor="{StaticResource defaultBlackColor}" Opacity="0.6"
+                                           Grid.Row="0" HorizontalOptions="Center">
+
+
+
+                                            </Frame>
+                                            <Label TextColor="{StaticResource defaultWhiteColor}" Grid.Row="0"
+                                               FontSize="12.5" HorizontalTextAlignment="Center" Margin="8"
+                                               HorizontalOptions="CenterAndExpand"
+                                               VerticalOptions="CenterAndExpand"
+                                               FontFamily="CustomBold"
+                                               Text="{Binding CampaignText}"></Label>
+                                            <!--<Frame Padding="16,6,16,6" CornerRadius="3" BackgroundColor="{StaticResource defaultLightRedColor}" Grid.Row="0"
+                                           VerticalOptions="EndAndExpand" Margin="0,0,0,8" HorizontalOptions="Center">
+
+                                        <Label Text="Kullan" FontFamily="CustomBold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                       FontSize="10" TextColor="{StaticResource defaultWhiteColor}"></Label>
+
+                                    </Frame>-->
+
+
+                                            <!--<StackLayout Grid.Row="1" HorizontalOptions="StartAndExpand" Spacing="3">
+
+                                                <Label TextColor="{StaticResource defaultBlackColor}" 
+                                               FontSize="{Binding FontSizeRestaurantName}"
+                                               FontFamily="CustomBold"
+                                               Text="{Binding RestaurantName}"></Label>
+                                                <Label TextColor="{StaticResource defaultFoggyColor}" FontSize="10"
+                                               FontFamily="CustomMedium" Text="{Binding District}"></Label>
+                                                <StackLayout Orientation="Horizontal" Spacing="0.5">
+
+                                                    <Label Text="star" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleFirstStar}"></Label>
+                                                    <Label Text="star" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleSecondStar}"></Label>
+                                                    <Label Text="star" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleThirdStar}"></Label>
+                                                    <Label Text="star" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleFourthStar}"></Label>
+                                                    <Label Text="star" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleFifthStar}"></Label>
+                                                    <Label Text="{Binding NumberOfReviewsStr}" FontFamily="CustomMedium" Margin="4,0,0,0"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultBlackColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleFirstStar}"></Label>
+                                                </StackLayout>
+
+                                            </StackLayout>-->
+
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer  Tapped="tapCampaignSelected_Tapped"></TapGestureRecognizer>
+                                            </Grid.GestureRecognizers>
+
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+
+
+                            </CollectionView>
+
+
+
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" IsVisible="False" Opacity="0"
+                                 Spacing="6" x:Name="stackProperties" Margin="14,8,14,12">
+
+
+                            <Label Text="Diğer özellikler" FontSize="16" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomBold"
+                               ></Label>
+                            <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="10" Margin="0,6,0,0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+
+                                <StackLayout Grid.Column="0" HorizontalOptions="StartAndExpand" x:Name="stackPropertiesList1" Spacing="5" >
+
+
+
+                                </StackLayout>
+
+                                <StackLayout Grid.Column="1" HorizontalOptions="StartAndExpand" x:Name="stackPropertiesList2"  Spacing="5" >
+
+
+
+                                </StackLayout>
+
+
+                            </Grid>
+
+                        </StackLayout>
+                        <StackLayout x:Name="stackReviews" HorizontalOptions="FillAndExpand" VerticalOptions="Start" IsVisible="False" Opacity="1"
+                                 Spacing="6" Margin="14,8,14,12" >
+                            <Label Text="Kullanıcı yorumları" FontSize="16" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomBold"
+                               ></Label>
+
+                            <CollectionView x:Name="collectionViewReviews" HorizontalOptions="FillAndExpand" ItemsSource="{Binding .}"
+                                        Margin="0,8,0,0" VerticalScrollBarVisibility="Never" VerticalOptions="Start" >
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="12" HorizontalItemSpacing="4" />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout HorizontalOptions="FillAndExpand" Spacing="8">
+
+                                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal"  Padding="0" Spacing="4" >
+
+
+                                                <Frame WidthRequest="48" HeightRequest="48" CornerRadius="24"
+                                            Padding="0" IsClippedToBounds="True" BackgroundColor="Transparent"
+                                                Margin="0">
+
+                                                    <Image HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"
+                                        Source="{Binding ProfilePicturePath}" Margin="0" ></Image>
+
+                                                </Frame>
+                                                <StackLayout HorizontalOptions="StartAndExpand" BindingContext="{Binding .}"
+                                                         Margin="0" VerticalOptions="CenterAndExpand" Spacing="4" >
+
+                                                    <Label Text="{Binding UserName}" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomMedium"
+                                        FontSize="12.5"  HorizontalOptions="Start"
+                                           ></Label>
+                                                    <StackLayout Orientation="Horizontal" Spacing="0.8" HorizontalOptions="StartAndExpand">
+
+                                                        <Label Text="star" TextColor="{StaticResource defaultRedColor}" FontSize="11"
+                                               VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                           IsVisible="{Binding isVisibleStar1}"></Label>
+                                                        <Label Text="star" TextColor="{StaticResource defaultRedColor}" FontSize="11"
+                                               VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                            IsVisible="{Binding isVisibleStar2}"></Label>
+                                                        <Label Text="star" TextColor="{StaticResource defaultRedColor}" FontSize="11"
+                                               VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                            IsVisible="{Binding isVisibleStar3}"></Label>
+                                                        <Label Text="star" TextColor="{StaticResource defaultRedColor}" FontSize="11"
+                                               VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                            IsVisible="{Binding isVisibleStar4}"></Label>
+                                                        <Label Text="star" TextColor="{StaticResource defaultRedColor}" FontSize="11"
+                                               VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                            IsVisible="{Binding isVisibleStar5}"></Label>
+
+                                                    </StackLayout>
+
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="tapVisitUser" Tapped="tapVisitUser_Tapped"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
+
+                                                </StackLayout>
+
+
+                                            </StackLayout>
+                                            <Label Text="{Binding ReviewText}"  FontSize="12" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultFoggyColor}" Margin="6,0,6,0"></Label>
+
+                                        </StackLayout>
+
+
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+
+                        </StackLayout>
+
+
+                    </StackLayout>
+
+
+                </ScrollView>
+                <Frame Margin="8,0,8,10" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Grid.Row="1" x:Name="frameSelectedItem"
+                       HeightRequest="80" BackgroundColor="{StaticResource defaultWhiteColor}" BorderColor="{StaticResource defaultShadedWhiteColor}"
+                       Padding="0" CornerRadius="3" IsClippedToBounds="True" IsVisible="False" Opacity="0" >
+
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" ColumnSpacing="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Image x:Name="imgSelectedMenuItemImage" VerticalOptions="FillAndExpand" WidthRequest="100" 
+                               Aspect="AspectFill" Grid.Column="0"></Image>
+                        <Frame CornerRadius="6" Padding="4,3,4,3" BackgroundColor="Transparent" BorderColor="Transparent" 
+                               Grid.Column="3" Margin="0,0,8,0" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand">
+
+                            <Label x:Name="lblCancel" Text="times" FontFamily="{StaticResource FontAwesomeLight}"
+                                   TextColor="{StaticResource defaultFoggyColor}" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="tapCancelItem" Tapped="tapCancelItem_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+
+                        </Frame>
+                        <StackLayout Grid.Column="2" VerticalOptions="CenterAndExpand" Spacing="0" >
+                            <Label Text="Yeaty puanların ile" FontSize="10" TextColor="{StaticResource defaultFoggyColor}"
+                                   FontFamily="CustomMedium" HorizontalOptions="Center"
+                                   ></Label>
+                            <Frame CornerRadius="3" Margin="0"  Padding="10,8,10,8" IsClippedToBounds="True"
+                               BackgroundColor="{StaticResource defaultLightRedColor}">
+                                <Label Text="Şimdi al" FontSize="12" TextColor="{StaticResource defaultWhiteColor}"
+                                   FontFamily="CustomBold" HorizontalOptions="Center"
+                                   ></Label>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="tapOpenMenuItem" Tapped="tapOpenMenuItem_Tapped"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Spacing="0">
+
+                            <Label Text="Seçili ürün" FontSize="12" TextColor="{StaticResource defaultFoggyColor}"
+                                   FontFamily="CustomMedium"
+                                   ></Label>
+                            <Label x:Name="lblSelectedMenuItemNameAndPrice" FontSize="14" TextColor="{StaticResource defaultBlackColor}"
+                                   FontFamily="CustomBold"
+                                   ></Label>
+                        </StackLayout>
+
+
+                    </Grid>
+
+
+                </Frame>
+            </Grid>
+
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

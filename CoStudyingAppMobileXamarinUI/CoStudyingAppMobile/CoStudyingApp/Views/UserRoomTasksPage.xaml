@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeatyAppMobile.Views.UserRoomTasksPage">
+    <ContentPage.Content>
+
+        <StackLayout>
+            <StackLayout x:Name="stackHeader" Margin="0,16,0,12" Orientation="Horizontal" Spacing="24">
+
+                <Frame Padding="6,2,2,2" HorizontalOptions="Start" BackgroundColor="Transparent" CornerRadius="3">
+
+                    <Label Text="arrow-left" FontFamily="{StaticResource FontAwesomeLight}" FontSize="20" 
+                               TextColor="{StaticResource defaultBlackColor}"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+
+                </Frame>
+                <Label Text="Görevler" TextColor="{StaticResource defaultBlackColor}" FontSize="16" FontFamily="CustomMedium"
+                           HorizontalOptions="StartAndExpand" Margin="0"></Label>
+            </StackLayout>
+
+            <Label Text="Görev ekle" FontSize="16" FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}">
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="tapAddTask" Tapped="tapAddTask_Tapped"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+
+            </Label>
+            <CollectionView Margin="12,16,12,0" BindingContext="{Binding .}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <CollectionView.Header>
+                    <StackLayout>
+
+                    </StackLayout>
+                </CollectionView.Header>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="12,12,12,12">
+                            <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                           Padding="0"
+                           
+                           CornerRadius="8" IsClippedToBounds="True" 
+                           Margin="0,0,0,0" 
+                           BorderColor="{StaticResource defaultShadedWhiteColor}"
+                           HeightRequest="95">
+
+
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="{Binding Text}" FontFamily="CustomBold" FontSize="12" TextColor="{StaticResource defaultBlackColor}"></Label>
+                                    <Label  FontFamily="CustomBold" FontSize="10" Grid.Row="1" Grid.Column="0" VerticalOptions="EndAndExpand" Text="{Binding userFullName}">
+
+                                    </Label>
+                                    <Label  FontFamily="CustomBold" FontSize="10" Grid.Row="1" Grid.Column="1" VerticalOptions="EndAndExpand" Text="{Binding DeadlineStr}"></Label>
+                                </Grid>
+
+
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

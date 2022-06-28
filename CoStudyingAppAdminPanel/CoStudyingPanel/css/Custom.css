@@ -1,0 +1,120 @@
+﻿.validation-summary-errors ul {
+    list-style-type: none;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+    .validation-summary-errors ul li {
+        border: 0px;
+        font-weight: bold;
+        border-style: solid;
+        border-bottom-width: 2px;
+        border-bottom-color: gray;
+        padding-bottom: 4px;
+        padding-top: 4px;
+        text-align: center;
+    }
+
+    .nav-item a:hover {
+        color:#ed3938;
+    }
+td a {
+    color:black;
+}
+
+ul.pagination li.active {
+    color: white;
+    
+}
+
+ul.pagination li a:hover {
+        color: #ed3938;
+        background-color: white;
+        border-width: 2px;
+        border-color: #ed3938;
+}
+ul.pagination li.active a:hover {
+    color: #ed3938;
+    background-color: white;
+}
+
+ul.pagination li.active a {
+    color: white;
+    background-color: black;
+}
+
+
+    ul.pagination li a {
+        color: white;
+        background-color: #ed3938   ;
+        border-radius: 50%;
+    }
+
+.fa {
+    margin-right: 7px;
+}
+.yeatybutton {
+    background-color: #ed3938;
+    color: white;
+}
+
+    .yeatybutton:hover {
+        background-color: white;
+        color: #ed3938;
+        border-color: #ed3938;
+        border-width: 1px;
+    }
+
+.yeaty {
+    color: #ed3938;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+
+.image-area {
+    position: relative;
+    width: 50%;
+    background: #333;
+}
+
+    .image-area img {
+        max-width: 100%;
+        height: auto;
+    }
+
+.remove-image {
+    display: none;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 10em;
+    padding: 2px 6px 3px;
+    text-decoration: none;
+    font: 700 21px/20px sans-serif;
+    background: #555;
+    border: 3px solid #fff;
+    color: #FFF;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    -webkit-transition: background 0.5s;
+    transition: background 0.5s;
+}
+
+    .remove-image:hover {
+        background: #ed3938;
+        color:white;
+        padding: 3px 7px 5px;
+        top: -11px;
+        right: -11px;
+    }
+
+    .remove-image:active {
+        background: #ed3938;
+        top: -10px;
+        right: -11px;
+    }

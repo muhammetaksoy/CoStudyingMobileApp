@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="YeatyAppMobile.Views.HomeTabbedPages.WalletPage">
+    <ContentPage.IconImageSource>
+
+        <FontImageSource FontFamily="{StaticResource FontAwesomeLight}" Glyph="wallet"></FontImageSource>
+
+    </ContentPage.IconImageSource>
+    <ContentPage.Content>
+
+        <StackLayout x:Name="stackGeneral" Margin="0" Padding="0" Spacing="0">
+            <StackLayout BackgroundColor="{StaticResource defaultShadedWhiteColor}" Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Start">
+
+
+                <StackLayout x:Name="stackHeader" Margin="12,16,16,8" Orientation="Horizontal" Spacing="8">
+
+
+                    <Label Text="Cüzdanım" TextColor="{StaticResource defaultBlackColor}" FontSize="16" FontFamily="CustomMedium"
+                           HorizontalOptions="StartAndExpand" Margin="0"></Label>
+
+
+
+                </StackLayout>
+
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="0" Opacity="0.25" ></BoxView>
+            </StackLayout>
+            <ScrollView Margin="0" x:Name="mainScrollView">
+
+
+                <StackLayout x:Name="stackMain" HorizontalOptions="FillAndExpand" >
+
+                    <Grid x:Name="stackSection1" Margin="0,0,0,12">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Frame x:Name="frameImage1" BackgroundColor="{StaticResource defaultFoggyColor}" Padding="0" HeightRequest="200"
+                           CornerRadius="0" Grid.Column="0"  IsClippedToBounds="True" HorizontalOptions="FillAndExpand"
+                           >
+                            <Image x:Name="imgCreateQR" Source="invitePersonImage2.jpg" HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFill" VerticalOptions="FillAndExpand" HeightRequest="200"></Image>
+
+
+                        </Frame>
+                        <Frame BackgroundColor="{StaticResource defaultBlackColor}" Padding="0" CornerRadius="0"
+                               Opacity="0.5" HorizontalOptions="FillAndExpand" Grid.Column="0" IsClippedToBounds="True"
+                               VerticalOptions="FillAndExpand"
+                               >
+
+
+                        </Frame>
+                        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="14,12,14,24">
+
+                            <Label Text="users" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" HorizontalOptions="CenterAndExpand"
+                                   Margin="0,12,0,0" TextColor="{StaticResource defaultWhiteColor}"></Label>
+                            <Label Text="Davet et, kazan!" FontSize="14" Margin="12,12,12,0"
+                               TextColor="{StaticResource defaultWhiteColor}" FontFamily="CustomBold" HorizontalOptions="CenterAndExpand"></Label>
+                            <Label Text="Şimdi Yeaty'e arkadaşlarını davet eden üyelerimiz, ilk alışverişte 10 TL ekstra Yeaty bakiyesi kazanıyor." 
+                               FontSize="10" HorizontalTextAlignment="Center" Margin="0,0,2,0" LineHeight="1.2"
+                               TextColor="{StaticResource defaultWhiteColor}" FontFamily="CustomBold" HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand" Opacity="0.8"></Label>
+                            <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                                   CornerRadius="3" BackgroundColor="{StaticResource defaultLightRedColor}" Padding="16,10,16,10">
+
+                                <Label Text="Davet gönder" FontFamily="CustomMedium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                       FontSize="12" TextColor="{StaticResource defaultWhiteColor}"></Label>
+
+                            </Frame>
+
+
+
+                        </StackLayout>
+
+
+                    </Grid>
+                    <StackLayout x:Name="stackWalletInfo"  HorizontalOptions="FillAndExpand" Margin="12,8,0,0">
+
+
+                        <StackLayout Margin="0,0,12,6" Spacing="0" HorizontalOptions="CenterAndExpand">
+
+                           
+
+                            <Label TextColor="{StaticResource defaultBlackColor}"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="" FontFamily="CustomBold" FontSize="42" CharacterSpacing="0.5" x:Name="lblinWallet"></Span>
+                                        <!--<Span Text="coins" FontFamily="{StaticResource FontAwesomeLight}" FontSize="20" ></Span>-->
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+                            </Label>
+                            <Label Text="yeaty bakiyem" TextColor="{StaticResource defaultFoggyColor}" FontFamily="CustomBold"
+                                   FontSize="10" HorizontalOptions="CenterAndExpand"
+                                   ></Label>
+
+
+
+                        </StackLayout>
+
+                        <Grid HorizontalOptions="Center" x:Name="stackLoading" VerticalOptions="CenterAndExpand" IsVisible="False"
+                             Padding="5" BackgroundColor="Transparent"  Margin="0,0,0,120"  >
+                            <lottie:AnimationView x:Name="lottieLoading" Animation="loadingCircles.json" AutoPlay="True" 
+                              HeightRequest="200" WidthRequest="200" RepeatMode="Infinite"
+                                      VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></lottie:AnimationView>
+
+
+                        </Grid>
+
+                        <StackLayout Orientation="Horizontal" Margin="0,32,16,12" IsVisible="False" Opacity="0" x:Name="stackPreviousActivities">
+
+                            <Label FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="16" Margin="0,0,0,0"
+                               x:Name="lblHeaderSection2"
+                           Text="Geçmiş Aktivitem" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+                            </Label>
+                            <Label FontFamily="CustomBold" TextColor="{StaticResource defaultFoggyColor}" FontSize="10"
+                           Text="Tümünü gör" HorizontalOptions="EndAndExpand" VerticalOptions="Center"></Label>
+                        </StackLayout>
+
+                        <CollectionView ItemsSource="{Binding .}" HorizontalOptions="FillAndExpand" x:Name="collectionViewPreviousActions"
+                                    VerticalScrollBarVisibility="Never" 
+                                    Margin="0,8,12,2" VerticalOptions="FillAndExpand"
+                                                        IsVisible="True" >
+
+
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="8" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand" Margin="0,0,14,12" HeightRequest="50" BindingContext="{Binding .}" >
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame CornerRadius="3" 
+                                   HeightRequest="50" WidthRequest="60" Grid.Row="0"  Grid.Column="0"
+                                   Grid.RowSpan="2" Padding="0" BackgroundColor="{StaticResource defaultFoggyColor}" >
+
+                                            <Image Source="{Binding PhotoPath}" Aspect="AspectFill" VerticalOptions="FillAndExpand" 
+                                       HorizontalOptions="CenterAndExpand"></Image>
+
+                                        </Frame>
+                                        <Label Grid.Row="0" Grid.Column="1" LineBreakMode="TailTruncation">
+
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span TextColor="{StaticResource defaultBlackColor}" FontSize="12" FontFamily="CustomBold" Text="{Binding ItemName}"></Span>
+                                                    <Span Text=" / " TextColor="{StaticResource defaultFoggyColor}" FontSize="9" FontFamily="CustomMedium"></Span>
+                                                    <Span Text="{Binding RestaurantName}" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+
+                                        </Label>
+                                        <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand">
+
+                                            <Label Text="{Binding SubText}" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Label>
+                                            <Label Text="{Binding DateStr}" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" VerticalOptions="EndAndExpand"
+                                                   FontFamily="CustomMedium"></Label>
+
+                                        </StackLayout>
+                                        <Label Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" Grid.Column="2" 
+                                   Text="{Binding CostStr}" TextColor="{Binding CostStrColor}" FontFamily="CustomBold" FontSize="14"
+                                   ></Label>
+
+
+
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer  Tapped="tapGoProfile_Tapped"></TapGestureRecognizer>
+                                        </Grid.GestureRecognizers>
+                                        
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+
+                        
+
+                        <!--<Grid HorizontalOptions="FillAndExpand" Margin="0,0,14,12" HeightRequest="60">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame CornerRadius="3" 
+                                   HeightRequest="60" WidthRequest="60" Grid.Row="0"  Grid.Column="0"
+                                   Grid.RowSpan="2" Padding="0" BackgroundColor="{StaticResource defaultFoggyColor}" >
+
+                                <Image Source="cappucino.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" 
+                                       HorizontalOptions="CenterAndExpand"></Image>
+                                
+                            </Frame>
+                            <Label Grid.Row="0" Grid.Column="1">
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span TextColor="{StaticResource defaultBlackColor}" FontSize="12" FontFamily="CustomBold" Text="Cappucino"></Span>
+                                        <Span Text=" / " TextColor="{StaticResource defaultFoggyColor}" FontSize="9" FontFamily="CustomMedium"></Span>
+                                        <Span Text="De'la Carte Cafe" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText> 
+                                
+                            </Label>
+                            <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Start">
+
+                                <Label Text="Yeaty puanlar ile ödendi" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Label>
+                                <Label Text="1 hafta önce" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Label>
+
+                            </StackLayout>
+                            <Label Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" Grid.Column="2" 
+                                   Text="-8,5" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomBold" FontSize="14"
+                                   ></Label>
+
+                        </Grid>
+
+                        <Grid HorizontalOptions="FillAndExpand" Margin="0,0,14,12" HeightRequest="60">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame CornerRadius="3" 
+                                   HeightRequest="60" WidthRequest="60" Grid.Row="0"  Grid.Column="0"
+                                   Grid.RowSpan="2" Padding="0" BackgroundColor="{StaticResource defaultFoggyColor}" >
+
+                                <Image Source="https://media-cdn.tripadvisor.com/media/photo-s/09/65/59/5a/kulup-bahce-kafe.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" 
+                                       HorizontalOptions="CenterAndExpand"></Image>
+
+                            </Frame>
+                            <Label Grid.Row="0" Grid.Column="1">
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span TextColor="{StaticResource defaultBlackColor}" FontSize="12" FontFamily="CustomBold" Text="Kampanya"></Span>
+                                        <Span Text=" / " TextColor="{StaticResource defaultFoggyColor}" FontSize="9" FontFamily="CustomMedium"></Span>
+                                        <Span Text="Kulüp Bahçe Kafe" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+                            </Label>
+                            <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Start">
+
+                                <Label Text="Yeaty özel kampayası katılımı" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Label>
+                                <Label Text="1 hafta önce" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Label>
+
+                            </StackLayout>
+                            <Label Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" Grid.Column="2" 
+                                   Text="Ücretsiz" TextColor="#006b1d" FontFamily="CustomBold" FontSize="12"
+                                   ></Label>
+
+                        </Grid>
+
+                        <Grid HorizontalOptions="FillAndExpand" Margin="0,0,14,12" HeightRequest="60">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame CornerRadius="3" 
+                                   HeightRequest="60" WidthRequest="60" Grid.Row="0"  Grid.Column="0"
+                                   Grid.RowSpan="2" Padding="0" BackgroundColor="{StaticResource defaultFoggyColor}" >
+
+                                <Image Source="https://media-cdn.tripadvisor.com/media/photo-s/09/65/59/5a/kulup-bahce-kafe.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" 
+                                       HorizontalOptions="CenterAndExpand"></Image>
+
+                            </Frame>
+                            <Label Grid.Row="0" Grid.Column="1">
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span TextColor="{StaticResource defaultBlackColor}" FontSize="12" FontFamily="CustomBold" Text="Geri Bakiye"></Span>
+                                        <Span Text=" / " TextColor="{StaticResource defaultFoggyColor}" FontSize="9" FontFamily="CustomMedium"></Span>
+                                        <Span Text="Kulüp Bahçe Kafe" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+                            </Label>
+                            <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Start">
+
+                                <Label Text="Yeaty hesabına yüklenen geri bakiye" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Label>
+                                <Label Text="1 hafta önce" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Label>
+
+                            </StackLayout>
+                            <Label Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" Grid.Column="2" 
+                                   Text="+17,0" TextColor="#006b1d" FontFamily="CustomBold" FontSize="14"
+                                   ></Label>
+
+                        </Grid>
+
+                        <Grid HorizontalOptions="FillAndExpand" Margin="0,0,14,12" HeightRequest="60">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame CornerRadius="3" 
+                                   HeightRequest="60" WidthRequest="60" Grid.Row="0"  Grid.Column="0"
+                                   Grid.RowSpan="2" Padding="0" BackgroundColor="{StaticResource defaultFoggyColor}" >
+
+                                <Image Source="cafeImage6.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" 
+                                       HorizontalOptions="CenterAndExpand"></Image>
+
+                            </Frame>
+                            <Label Grid.Row="0" Grid.Column="1">
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span TextColor="{StaticResource defaultBlackColor}" FontSize="12" FontFamily="CustomBold" Text="Kampanya"></Span>
+                                        <Span Text=" / " TextColor="{StaticResource defaultFoggyColor}" FontSize="9" FontFamily="CustomMedium"></Span>
+                                        <Span Text="N15 Coffee Shop" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+                            </Label>
+                            <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Start">
+
+                                <Label Text="Yeaty özel kampayası katılımı" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Label>
+                                <Label Text="1 hafta önce" TextColor="{StaticResource defaultFoggyColor}" FontSize="10" FontFamily="CustomMedium"></Label>
+
+                            </StackLayout>
+                            <Label Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" Grid.Column="2" 
+                                   Text="Ücretsiz" TextColor="#006b1d" FontFamily="CustomBold" FontSize="12"
+                                   ></Label>
+
+                        </Grid>-->
+
+
+
+
+                    </StackLayout>
+
+
+
+                </StackLayout>
+            </ScrollView>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

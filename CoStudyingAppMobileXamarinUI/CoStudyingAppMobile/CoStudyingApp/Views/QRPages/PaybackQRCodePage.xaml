@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             BackgroundColor="White"
+             x:Class="YeatyAppMobile.Views.QRPages.PaybackQRCodePage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Grid HorizontalOptions="Center" x:Name="stackLoading" VerticalOptions="CenterAndExpand" IsVisible="False"
+                             Padding="5" BackgroundColor="Transparent"  Margin="0,0,0,120"  >
+                <lottie:AnimationView x:Name="lottieLoading" Animation="loadingCircles.json" AutoPlay="True" 
+                              HeightRequest="200" WidthRequest="200" RepeatMode="Infinite"
+                                      VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></lottie:AnimationView>
+
+
+            </Grid>
+
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                         x:Name="mainStack" IsVisible="False" Opacity="0">
+
+                <StackLayout Orientation="Horizontal" Margin="14,24,14,16" x:Name="stackNavigation" Spacing="8">
+
+                    <Frame x:Name="frameBackButton" BackgroundColor="Transparent" Padding="6" CornerRadius="3" HorizontalOptions="Start">
+
+
+                        <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left"
+                           FontSize="22" TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="Center"
+                           VerticalOptions="Center"></Label>
+
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+
+                    <!--<Label Text="Geri ödeme al" TextColor="{StaticResource defaultBlackColor}" FontSize="16" FontFamily="CustomMedium"
+                           HorizontalOptions="StartAndExpand" Margin="0"></Label>-->
+
+
+                </StackLayout>
+
+                <!--<StackLayout Margin="12,18,12,8" Spacing="2" HorizontalOptions="CenterAndExpand">
+                    
+                </StackLayout>-->
+
+                <StackLayout  Margin="12,8,12,8" VerticalOptions="FillAndExpand">
+                    <StackLayout x:Name="stackQR" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Margin="0,0,0,60">
+
+                        <Label Text="Qr kodu yetkiliye gösterin" TextColor="{StaticResource defaultBlackColor}" FontSize="18"
+                           FontFamily="CustomMedium" HorizontalTextAlignment="Center"
+                           HorizontalOptions="Center" Margin="0"></Label>
+                        <Label Text="Toplam tutarın %10'u hemen geri bakiye olarak Yeaty hesabınıza eklensin." HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource defaultFoggyColor}" FontSize="13" FontFamily="CustomMedium"
+                           HorizontalOptions="StartAndExpand" Margin="0,0,0,48"></Label>
+
+
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="12,0,12,12" Spacing="6">
+                    <Label Text="Kalan süre: " FontSize="14" HorizontalOptions="Center" TextColor="{StaticResource defaultBlackColor}"
+                           FontFamily="CustomMedium" x:Name="lblTimerSituation"></Label>
+                    <Frame CornerRadius="3" BackgroundColor="{StaticResource defaultLightRedColor}" IsClippedToBounds="True" HorizontalOptions="Center"
+                           Padding="32,9,32,9" HasShadow="False" Opacity="1" IsVisible="False" x:Name="frameNewQr">
+
+
+                        <Label Text="Yeni kod gönder" FontFamily="CustomBold" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center"
+                               TextColor="{StaticResource defaultWhiteColor}"
+                               ></Label>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapNewQR" Tapped="tapNewQR_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame CornerRadius="3" BackgroundColor="Transparent" IsClippedToBounds="True" HorizontalOptions="Center"
+                           x:Name="frameTimer" WidthRequest="100"
+                           Padding="0,9,0,9" HasShadow="False" Opacity="1" BorderColor="{StaticResource defaultLightRedColor}">
+
+
+                        <Label Text="00:00" FontFamily="CustomBold" FontSize="15"
+                                x:Name="lblTimer" HorizontalOptions="Center" VerticalOptions="Center"
+                               TextColor="{StaticResource defaultLightRedColor}"
+                               ></Label>
+                    </Frame>
+                    
+                </StackLayout>
+
+
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

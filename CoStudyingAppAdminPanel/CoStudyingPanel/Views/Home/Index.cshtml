@@ -1,0 +1,84 @@
+﻿@using CoStudyingPanel.Models
+
+@{
+    ViewBag.Title = "CoStudy Admin Kontrol Paneli";
+    DatabaseContext db = new DatabaseContext();
+    User user = Session["login"] as User;
+    List<University> universities = db.Universities.Where(a => a.isActive).OrderByDescending(a => a.CreatedOn).ToList();
+    List<Faculty> faculties = db.Faculties.Where(a => a.isActive).OrderByDescending(a => a.CreatedOn).ToList();
+    List<Department> departments = db.Departments.Where(a => a.isActive).OrderByDescending(a => a.CreatedOn).ToList();
+
+    List<University> newunis = universities.OrderByDescending(a => a.CreatedOn).Take(15).ToList();
+
+    int i = 1;
+}
+<link href="~/css/data.css" rel="stylesheet" />
+<div class="az-content-body">
+    <div class="az-dashboard-one-title">
+        <div>
+            <h2 class="az-dashboard-title" style="color: #ed3038;">CoStudy Admin Kontrol Paneline Hoşgeldiniz!</h2>
+            <p class="az-dashboard-text">Uygulama ile ilgili tüm bilgileri burada bulabilirsiniz.</p>
+        </div>
+
+    </div>
+    <div class="az-dashboard-nav">
+        <nav class="nav">
+            <a class="nav-link active" data-toggle="tab" href="#" style="display:block; padding-bottom:0px;"><i class="typcn typcn-home"></i> Genel Bakış</a>
+            <a class="nav-link active" data-toggle="tab" href="#" style="display:block; padding-bottom:0px;"> </a>
+        </nav>
+    </div>
+
+    <div class="row row-sm mg-b-20">
+        <div class="row1-container" style="padding: 5px 0px 5px 65px;">
+            <div class="box red" style="width: 300px; ">
+                <h2> Üniversite Sayısı</h2>
+                <h1 style="position: relative; top: 60px; color: #ed3038; font-weight: bold; font-size: xx-large;">@universities.Count</h1>
+                <img src="https://assets.codepen.io/2301174/icon-team-builder.svg" alt="">
+            </div>
+            <div class="box blue" style="width: 300px; ">
+                <h2> Fakülte Sayısı</h2>
+                <h1 style="position: relative; top: 60px; color: #ed3038; font-weight: bold; font-size: xx-large;">@faculties.Count</h1>
+                <img src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+            </div>
+            <div class="box orange" style="width: 300px; ">
+                <h2> Departman Sayısı</h2>
+                <h1 style="position: relative; top: 60px; color: #ed3038; font-weight: bold; font-size: xx-large;">@departments.Count</h1>
+                <img src="https://assets.codepen.io/2301174/icon-calculator.svg" alt="">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-sm mg-b-20">
+        <h2 class="az-content-title">Yeni Eklenen Üniversiteler (15) &nbsp; <i class="fa fa-list-ol"></i></h2>
+
+        <div class="table-responsive">
+            <table class="table table-hover mg-b-0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ÜNİVERSİTE Adı</th>
+                        <th>ŞEHİR</th>
+                        <th>Eklenme TARİHİ</th>            
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (University item in newunis)
+                    {
+                        <tr>
+
+                            <th scope="row">@(i++)</th>
+
+                            <td>
+                                @item.UniversityName
+
+                            </td>
+                            <td>@item.City</td>
+                            <td>@CustomTime.GetDateTimeString(item.CreatedOn)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

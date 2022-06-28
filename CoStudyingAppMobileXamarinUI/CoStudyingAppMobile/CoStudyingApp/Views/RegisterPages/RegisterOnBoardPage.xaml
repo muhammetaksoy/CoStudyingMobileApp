@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:custom="clr-namespace:YeatyAppMobile.CustomControls"
+
+             x:Class="YeatyAppMobile.Views.RegisterPages.RegisterOnBoardPage">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" Margin="24" x:Name="stackNavigation">
+
+                <Frame x:Name="frameBackButton" BackgroundColor="Transparent" Padding="6" CornerRadius="3" HorizontalOptions="Start">
+
+
+                    <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left"
+                           FontSize="16" TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="Center"
+                           VerticalOptions="Center"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                    
+                </Frame>
+                
+            </StackLayout>
+
+            <Label FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="16"
+                               x:Name="lblHeaderSection1"
+                   Margin="12,8,16,16"
+                           Text="CoStudy'e hoşgeldin!" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+
+
+            </Label>
+
+            <StackLayout x:Name="stackInfos" Spacing="10" Margin="12,10,12,0" HorizontalOptions="FillAndExpand"
+                         >
+
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,6" Margin="0" IsClippedToBounds="True">
+
+                    <custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}" 
+                                   Placeholder="Ad" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   FontSize="13" x:Name="lblName"
+                                   ></custom:XEntry>
+                    
+                </Frame>
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,6" Margin="0" IsClippedToBounds="True">
+
+                    <custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}" 
+                                   Placeholder="Soyad" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   FontSize="13" x:Name="lblSurname"
+                                   ></custom:XEntry>
+
+                </Frame>
+
+
+            </StackLayout>
+
+            <StackLayout x:Name="stackProceed" VerticalOptions="EndAndExpand" Margin="12">
+
+
+                <Frame HorizontalOptions="FillAndExpand" Padding="0,16,0,16" Margin="0" CornerRadius="5" IsClippedToBounds="True" 
+                           HasShadow="False" BackgroundColor="{StaticResource defaultBlackColor}" Opacity="0.3" x:Name="frameStart">
+
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Devam et" FontSize="14" TextColor="White"
+                               FontFamily="CustomBold"></Label>
+
+
+                    <!--<Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="tapGoogleLogin" Tapped="tapGoogleLogin_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>-->
+
+
+                </Frame>
+
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

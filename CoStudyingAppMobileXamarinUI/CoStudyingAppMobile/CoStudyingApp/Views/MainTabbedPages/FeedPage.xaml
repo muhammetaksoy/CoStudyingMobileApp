@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeatyAppMobile.Views.MainTabbedPages.FeedPage">
+    <ContentPage.IconImageSource>
+
+        <FontImageSource FontFamily="{StaticResource FontAwesomeLight}" Glyph="compass"></FontImageSource>
+
+    </ContentPage.IconImageSource>
+    <ContentPage.Content>
+        
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <StackLayout x:Name="stackGeneral"  Margin="0" Padding="0" Spacing="0" IsVisible="True">
+
+                <StackLayout x:Name="stackWelcomeText" Margin="24,36,12,12" Opacity="0">
+                    <Label x:Name="lblWelcome" FontFamily="CustomBold" FontSize="24">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Hoşgeldin"  TextColor="{StaticResource defaultLightRedColor}"></Span>
+                                <Span Text=" "></Span>
+                                <Span x:Name="spanUserFirstName" Text="Ulaş," TextColor="{StaticResource defaultLightRedColor}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <!--<BoxView HeightRequest="1.5" Color="{StaticResource defaultBlackColor}" Opacity="0.4" Margin="0,8,36,0"></BoxView>-->
+                </StackLayout>
+
+                <StackLayout x:Name="stackGroupsHeader" Margin="24,36,12,12" IsVisible="False" Opacity="0">
+                    <Label x:Name="lblGroupsHeader" FontFamily="CustomBold" FontSize="12">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Book " FontFamily="{StaticResource FontAwesomeSolid}"></Span>
+                                <Span Text="Çalışma Gruplarım"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+                <ScrollView Orientation="Both" Margin="18,0,0,0" x:Name="scrollViewMyGroups"  
+                            IsVisible="False" Opacity="0" HorizontalScrollBarVisibility="Never">
+                    <FlexLayout x:Name="insideScrollViewMyGroupsFlexLayout">
+
+                        <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSelectionTab1" IsVisible="False" ClassId="group1"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                                <Label x:Name="lblStudyGroupName1" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                                <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                                <Span Text="12 " x:Name="lblStudyGroupUserCount1" ></Span>
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                   
+
+                                </Grid>
+
+
+
+                            </StackLayout>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+
+                        </Frame>
+
+                        <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSelectionTab2"  IsVisible="False"  ClassId="group2"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                                <Label x:Name="lblStudyGroupName2" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                                <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                                <Span Text="12 " x:Name="lblStudyGroupUserCount2" ></Span>
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    
+
+                                </Grid>
+
+
+
+                            </StackLayout>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+
+
+
+                        </Frame>
+
+                        <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSelectionTab3"  IsVisible="False"  ClassId="group3"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                                <Label x:Name="lblStudyGroupName3" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                                <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                                <Span Text="12 " x:Name="lblStudyGroupUserCount3" ></Span>
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                   
+
+                                </Grid>
+
+
+
+                            </StackLayout>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+
+
+
+                        </Frame>
+
+                        <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSelectionTab4"  IsVisible="False"  ClassId="group4"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                                <Label x:Name="lblStudyGroupName4" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                                <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                                <Span Text="12 " x:Name="lblStudyGroupUserCount4" ></Span>
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    
+
+                                </Grid>
+
+
+
+                            </StackLayout>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+
+
+
+                        </Frame>
+
+                        <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSelectionTab5"  IsVisible="False"  ClassId="group5"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                                <Label x:Name="lblStudyGroupName5" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                                <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                                <Span Text="12 " x:Name="lblStudyGroupUserCount5" ></Span>
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    
+                                </Grid>
+
+
+
+                            </StackLayout>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+
+
+
+                        </Frame>
+
+                    </FlexLayout>
+                </ScrollView>
+
+                <StackLayout x:Name="stackUpcomingTasksHeader" Margin="24,12,12,12" IsVisible="False" Opacity="0">
+                    <Label x:Name="lblUpcomingTasksHeader" FontFamily="CustomBold" FontSize="12">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="clock " FontFamily="{StaticResource FontAwesomeSolid}"></Span>
+                                <Span Text="Yaklaşan görevler"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+                <ScrollView Orientation="Both" Opacity="0"
+                            Margin="18,0,0,0" x:Name="scrollViewUpcomingTasks" IsVisible="False" HorizontalScrollBarVisibility="Never">
+                    <FlexLayout x:Name="insideScrollViewUpcomingTasksFlexLayout">
+
+                        <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frame2SelectionTab1" IsVisible="False"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                                <Label Text="Backend Bug Fixes tamamla" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                                <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label  FontFamily="CustomBold" FontSize="12" Grid.Column="0" Grid.ColumnSpan="2">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="exclamation " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="12"></Span>
+                                                <Span Text="Bugün içinde bitiyor " ></Span>
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+
+
+                                </Grid>
+
+
+
+                            </StackLayout>
+
+
+
+                        </Frame>
+
+                        <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frame2SelectionTab2"  IsVisible="False"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                                <Label Text="PDF özet çıkar" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                                <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label  FontFamily="CustomBold" FontSize="12" Grid.Column="0" Grid.ColumnSpan="2">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="exclamation " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="12"></Span>
+                                                <Span Text="12 gün kaldı " ></Span>
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+
+
+                                </Grid>
+
+
+
+                            </StackLayout>
+
+
+
+                        </Frame>
+
+                        <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frame2SelectionTab3"  IsVisible="False"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                                <Label Text="CSE-1609 Final Sınavı" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                                <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label  FontFamily="CustomBold" FontSize="12" Grid.Column="0" Grid.ColumnSpan="2">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="exclamation " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="12"></Span>
+                                                <Span Text="2 hafta kaldı " ></Span>
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+
+
+                                </Grid>
+
+
+
+                            </StackLayout>
+
+
+
+                        </Frame>
+
+                    </FlexLayout>
+                </ScrollView>
+
+                <StackLayout x:Name="stackAnnouncementsHeader" Margin="24,12,12,18"  IsVisible="False" Opacity="0">
+                    <Label x:Name="lblAnnouncementsHeader" FontFamily="CustomBold" FontSize="12">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="bullhorn " FontFamily="{StaticResource FontAwesomeSolid}"></Span>
+                                <Span Text="Duyurular"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <StackLayout x:Name="stackAnnouncementsNew" HorizontalOptions="FillAndExpand"  IsVisible="False" Opacity="0" >
+
+                    <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" Padding="0"
+                           x:Name="frameAnnouncement1" IsVisible="False"
+                           CornerRadius="8" IsClippedToBounds="True" Margin="24,0,24,6" BorderColor="{StaticResource defaultShadedWhiteColor}" HeightRequest="95">
+
+
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="" x:Name="announcementText1" FontFamily="CustomBold" FontSize="12" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Label  FontFamily="CustomBold" FontSize="10" Grid.Row="1" VerticalOptions="EndAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="" x:Name="announcementIcon1"  FontFamily="{StaticResource FontAwesomeSolid}" FontSize="10"></Span>
+                                        <Span Text="" x:Name="announcementFrom1"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+
+
+                    </Frame>
+
+                    <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" Padding="0"
+                           x:Name="frameAnnouncement2" IsVisible="False"
+                           CornerRadius="8" IsClippedToBounds="True" Margin="24,0,24,6" BorderColor="{StaticResource defaultShadedWhiteColor}" HeightRequest="95">
+
+
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="" x:Name="announcementText2" FontFamily="CustomBold" FontSize="12" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Label  FontFamily="CustomBold" FontSize="10" Grid.Row="1" VerticalOptions="EndAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="" x:Name="announcementIcon2"  FontFamily="{StaticResource FontAwesomeSolid}" FontSize="10"></Span>
+                                        <Span Text="" x:Name="announcementFrom2"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+
+
+                    </Frame>
+
+                    <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" Padding="0"
+                           x:Name="frameAnnouncement3" IsVisible="False"
+                           CornerRadius="8" IsClippedToBounds="True" Margin="24,0,24,6" BorderColor="{StaticResource defaultShadedWhiteColor}" HeightRequest="95">
+
+
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="" x:Name="announcementText3" FontFamily="CustomBold" FontSize="12" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Label  FontFamily="CustomBold" FontSize="10" Grid.Row="1" VerticalOptions="EndAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="" x:Name="announcementIcon3"  FontFamily="{StaticResource FontAwesomeSolid}" FontSize="10"></Span>
+                                        <Span Text="" x:Name="announcementFrom3"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+
+
+                    </Frame>
+
+
+                    <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" Padding="0"
+                           x:Name="frameAnnouncement4" IsVisible="False"
+                           CornerRadius="8" IsClippedToBounds="True" Margin="24,0,24,6" BorderColor="{StaticResource defaultShadedWhiteColor}" HeightRequest="95">
+
+
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="" x:Name="announcementText4" FontFamily="CustomBold" FontSize="12" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Label  FontFamily="CustomBold" FontSize="10" Grid.Row="1" VerticalOptions="EndAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="" x:Name="announcementIcon4"  FontFamily="{StaticResource FontAwesomeSolid}" FontSize="10"></Span>
+                                        <Span Text="" x:Name="announcementFrom4"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+
+
+                    </Frame>
+
+                    <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" Padding="0"
+                           x:Name="frameAnnouncement5" IsVisible="False"
+                           CornerRadius="8" IsClippedToBounds="True" Margin="24,0,24,6" BorderColor="{StaticResource defaultShadedWhiteColor}" HeightRequest="95">
+
+
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="" x:Name="announcementText5" FontFamily="CustomBold" FontSize="12" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Label  FontFamily="CustomBold" FontSize="10" Grid.Row="1" VerticalOptions="EndAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="" x:Name="announcementIcon5"  FontFamily="{StaticResource FontAwesomeSolid}" FontSize="10"></Span>
+                                        <Span Text="" x:Name="announcementFrom5"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+
+
+                    </Frame>
+
+                    <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                           Padding="0"
+                           x:Name="frameAnnouncement6" IsVisible="False" 
+                           CornerRadius="8" IsClippedToBounds="True" 
+                           Margin="24,0,24,6" 
+                           BorderColor="{StaticResource defaultShadedWhiteColor}"
+                           HeightRequest="95">
+
+
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="" x:Name="announcementText6" FontFamily="CustomBold" FontSize="12" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Label  FontFamily="CustomBold" FontSize="10" Grid.Row="1" VerticalOptions="EndAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="" x:Name="announcementIcon6"  FontFamily="{StaticResource FontAwesomeSolid}" FontSize="10"></Span>
+                                        <Span Text="" x:Name="announcementFrom6"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+
+
+                    </Frame>
+
+
+
+
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

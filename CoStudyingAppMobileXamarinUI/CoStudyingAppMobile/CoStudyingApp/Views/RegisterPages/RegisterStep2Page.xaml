@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:custom="clr-namespace:YeatyAppMobile.CustomControls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeatyAppMobile.Views.RegisterPages.RegisterStep2Page">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" Margin="14,24,14,16" x:Name="stackNavigation">
+
+                <Frame x:Name="frameBackButton" BackgroundColor="Transparent" Padding="6" CornerRadius="3" HorizontalOptions="Start">
+
+
+                    <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left"
+                           FontSize="22" TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="Center"
+                           VerticalOptions="Center"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+
+                </Frame>
+
+            </StackLayout>
+
+            <Label FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="18"
+                               x:Name="lblHeaderSection1"
+                   Margin="12,0,16,16"
+                           Text="Bir kullanıcı adı belirle" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+
+
+            </Label>
+
+            <StackLayout x:Name="stackInfos" Spacing="10" Margin="12,10,12,0" HorizontalOptions="FillAndExpand"
+                         >
+
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,8" Margin="0" IsClippedToBounds="True">
+
+                    <custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}" 
+                                   Placeholder="Kullanıcı adı" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   FontSize="14" x:Name="entryUsername"
+                                   Completed="entryUsername_Completed"
+                                   TextChanged="entryUsername_TextChanged"
+                                   ></custom:XEntry>
+
+                </Frame>
+
+
+
+
+            </StackLayout>
+
+            <StackLayout x:Name="stackProceed" VerticalOptions="EndAndExpand" Margin="12">
+
+
+                <Frame HorizontalOptions="FillAndExpand" Padding="0,16,0,16" Margin="0" CornerRadius="5" 
+                       IsClippedToBounds="True" 
+                           HasShadow="False" BackgroundColor="{StaticResource defaultBlackColor}" Opacity="0.3" 
+                      x:Name="frameProceed">
+
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Devam et" FontSize="14" TextColor="White"
+                               FontFamily="CustomBold"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapProceed" Tapped="tapProceed_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+
+
+                </Frame>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

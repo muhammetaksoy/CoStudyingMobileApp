@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeatyAppMobile.Views.MainTabbedPages.CalendarPage">
+    <ContentPage.IconImageSource>
+
+        <FontImageSource FontFamily="{StaticResource FontAwesomeLight}" Glyph="calendar"></FontImageSource>
+
+    </ContentPage.IconImageSource>
+    <ContentPage.Content>
+
+        <StackLayout x:Name="stackInside" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    
+                    <StackLayout Margin="12" HorizontalOptions="FillAndExpand" x:Name="stackDays">
+
+                        <CollectionView SelectionChanged="listViewDays_SelectionChanged"
+                            x:Name="listViewDays" BindingContext="{Binding .}" Margin="0" HorizontalOptions="FillAndExpand">
+                            <CollectionView.Header>
+
+                                <StackLayout>
+                                    
+
+                                    <StackLayout x:Name="stackMonthAndYear" HorizontalOptions="CenterAndExpand" Margin="6,16,0,10" Orientation="Horizontal" Spacing="24">
+                                        <Label Text="arrow-left" Opacity="1" FontFamily="{StaticResource FontAwesomeLight}" FontSize="24" VerticalOptions="Center" 
+                               TextColor="{StaticResource defaultBlackColor}"></Label>
+                                        <!--<Label Text="Haziran, 2022" HorizontalOptions="CenterAndExpand"
+                           TextColor="{StaticResource defaultBlackColor}" FontSize="24" FontFamily="CustomBold"
+                            Margin="0"></Label>-->
+                                        <Picker Title="" x:Name="pickerMonthHeader" FontFamily="CustomBold" FontSize="24" Margin="0"
+                                SelectedIndexChanged="pickerMonthHeader_SelectedIndexChanged"
+                                HorizontalOptions="CenterAndExpand" TextColor="{StaticResource defaultBlackColor}"></Picker>
+                                        <Label Text="arrow-right" Opacity="1" FontFamily="{StaticResource FontAwesomeLight}" FontSize="24" VerticalOptions="Center" 
+                               TextColor="{StaticResource defaultBlackColor}" ></Label>
+
+                                    </StackLayout>
+
+                                </StackLayout>
+                                
+                            </CollectionView.Header>
+                            
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                            <StackLayout  Margin="0,6,0,6" >
+                                <Frame HorizontalOptions="FillAndExpand" CornerRadius="8" IsClippedToBounds="True" BackgroundColor="Transparent"
+                                    HeightRequest="60" Padding="0" Opacity="1" BindingContext="{Binding .}">
+
+                                    <Grid HorizontalOptions="FillAndExpand" Margin="0" ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Column="0" Margin="0" BackgroundColor="{StaticResource defaultFoggyColor}" HorizontalOptions="FillAndExpand"
+                                                   VerticalOptions="FillAndExpand">
+
+                                            <StackLayout VerticalOptions="CenterAndExpand" Spacing="0">
+
+                                                <Label Text="{Binding dayStr}" FontFamily="CustomBold" TextColor="{StaticResource defaultWhiteColor}"
+                                                                HorizontalOptions="CenterAndExpand" FontSize="26"></Label>
+                                                <Label Text="{Binding WeekdayStr}" FontFamily="CustomBold" TextColor="{StaticResource defaultWhiteColor}"
+                                                             HorizontalOptions="CenterAndExpand" FontSize="8"></Label>
+
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="1" Margin="0" BackgroundColor="{StaticResource defaultShadedWhiteColor }"
+                                                     HorizontalOptions="FillAndExpand">
+
+                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="16,8,8,8">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="9*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Frame Grid.Column="1" HeightRequest="30" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="Transparent">
+
+                                                    <Label FontFamily="{StaticResource FontAwesomeSolid}" Text="plus" VerticalOptions="Center" HorizontalOptions="EndAndExpand"
+                                                  FontSize="20" TextColor="{StaticResource defaultFoggyColor}" Margin="0,0,10,0" ></Label>
+
+                                                </Frame>
+
+                                                <Frame Grid.Column="0" HeightRequest="30" Padding="0" VerticalOptions="Center"
+                                               HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" >
+
+                                                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" IsVisible="{Binding hasDeadLine}">
+                                                        <Label FontFamily="{StaticResource FontAwesomeSolid}" Text="clock" VerticalOptions="Center"
+                                                  FontSize="14" TextColor="{StaticResource defaultRedColor}" ></Label>
+                                                        <Label FontFamily="CustomBold" Text="{Binding countDeadLine}" VerticalOptions="Center"
+                                                  FontSize="14" TextColor="{StaticResource defaultRedColor}" ></Label>
+                                                    </StackLayout>
+
+                                                </Frame>
+
+                                            </Grid>
+
+
+                                        </StackLayout>
+                                    </Grid>
+
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tapSelectDay" Tapped="tapSelectDay_Tapped"></TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+
+                                </Frame>
+                            </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+
+                       
+
+                    </StackLayout>
+                </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

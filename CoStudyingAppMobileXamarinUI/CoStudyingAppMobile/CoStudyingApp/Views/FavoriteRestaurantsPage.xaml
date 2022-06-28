@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="YeatyAppMobile.Views.FavoriteRestaurantsPage">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Spacing="0">
+            <StackLayout BackgroundColor="{StaticResource defaultShadedWhiteColor}"  Spacing="0"
+                         Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Start">
+
+
+                <StackLayout x:Name="stackHeader" Margin="12,16,16,6" Orientation="Horizontal" Spacing="18">
+
+                    <Frame Padding="6,2,2,2" HorizontalOptions="Start" BackgroundColor="Transparent" CornerRadius="3">
+
+                        <Label Text="arrow-left" FontFamily="{StaticResource FontAwesomeLight}" FontSize="20" 
+                               TextColor="{StaticResource defaultBlackColor}"></Label>
+
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+                    <Label Text="Favori ürünlerim" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomMedium"
+                           FontSize="16" HorizontalOptions="Start"  VerticalOptions="Center"></Label>
+
+
+
+                </StackLayout>
+
+
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="0" Opacity="0.25" ></BoxView>
+            </StackLayout>
+
+            <Grid HorizontalOptions="Center" x:Name="stackLoading" VerticalOptions="CenterAndExpand" IsVisible="False"
+                             Padding="5" BackgroundColor="Transparent"  Margin="0,0,0,120"   >
+                <lottie:AnimationView x:Name="lottieLoading" Animation="loadingCircles.json" AutoPlay="True" 
+                              HeightRequest="200" WidthRequest="200" RepeatMode="Infinite"
+                                      VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></lottie:AnimationView>
+
+
+            </Grid>
+            <Label x:Name="lblNoFavs" Text="Favorilere eklenmiş bir restoran bulunmuyor." TextColor="{StaticResource defaultFoggyColor}"
+                           FontFamily="CustomBold" Opacity="0.6" HorizontalOptions="CenterAndExpand" IsVisible="False"></Label>
+            <CollectionView ItemsSource="{Binding .}" HorizontalOptions="FillAndExpand" x:Name="collectionViewRestaurants"
+                                    VerticalScrollBarVisibility="Never" 
+                                    Margin="4,8,4,2" VerticalOptions="FillAndExpand"
+                                                        IsVisible="False" >
+
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" VerticalItemSpacing="16" HorizontalItemSpacing="4" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,0" BindingContext="{Binding .}">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Frame HeightRequest="240" Padding="0" CornerRadius="3" IsClippedToBounds="True"
+                                           BackgroundColor="Transparent" Grid.Row="0" HorizontalOptions="FillAndExpand">
+
+                                <Image Source="{Binding CardPhotoUrl}" HeightRequest="280"
+                                                HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                                               Aspect="AspectFill"></Image>
+
+                            </Frame>
+                            <StackLayout Grid.Row="1" HorizontalOptions="StartAndExpand" Spacing="3">
+
+                                <Label TextColor="{StaticResource defaultBlackColor}" 
+                                               FontSize="{Binding FontSizeRestaurantName}"
+                                               FontFamily="CustomBold"
+                                               Text="{Binding RestaurantName}"></Label>
+                                <Label TextColor="{StaticResource defaultFoggyColor}" FontSize="10"
+                                               FontFamily="CustomMedium" Text="{Binding District}"></Label>
+                                <StackLayout Orientation="Horizontal" Spacing="0.5">
+
+                                    <Label Text="star" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleFirstStar}"></Label>
+                                    <Label Text="star" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleSecondStar}"></Label>
+                                    <Label Text="star" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleThirdStar}"></Label>
+                                    <Label Text="star" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleFourthStar}"></Label>
+                                    <Label Text="star" FontFamily="{StaticResource FontAwesomeSolid}"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleFifthStar}"></Label>
+                                    <Label Text="{Binding NumberOfReviewsStr}" FontFamily="CustomMedium" Margin="4,0,0,0"
+                                                   VerticalOptions="Center" TextColor="{StaticResource defaultBlackColor}"
+                                                   FontSize="8" IsVisible="{Binding isVisibleFirstStar}"></Label>
+                                </StackLayout>
+
+                            </StackLayout>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                                                  Tapped="tapSelectRestaurant_Tapped"></TapGestureRecognizer>
+                            </Grid.GestureRecognizers>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeatyAppMobile.Views.PopupPages.LoadingPage">
+
+
+
+    <Frame Margin="16"
+           CornerRadius="3"
+           IsClippedToBounds="True"
+                 Padding="24"
+                 BackgroundColor="White"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center">
+        <ActivityIndicator IsVisible="True"
+                           IsRunning="True"
+                           Color="{StaticResource defaultLightRedColor}"
+                           IsEnabled="True"
+                           x:Name="indicator"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+
+
+    </Frame>
+
+</pages:PopupPage>

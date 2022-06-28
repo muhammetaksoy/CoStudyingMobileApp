@@ -1,0 +1,96 @@
+﻿@using CoStudyingPanel.Models;
+
+@model User
+
+@{
+    ViewBag.Title = "Kullanıcı Düzenle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<div class="az-content-body">
+    <div class="az-content-breadcrumb">
+        <span>Kullanıcılar</span>
+        <span>Kullanıcı Düzenle</span>
+    </div>
+    <h2 class="az-content-title">Kullanıcı Düzenle &nbsp; <i class="fa fa-edit"></i></h2>
+
+
+    <div class="az-content-label mg-b-5">Kullanıcı Bilgileri</div>
+    <p class="mg-b-20 col-md-12" style="font-weight:bold;">Lütfen Tüm '<span class="tx-danger">*</span>' Olan Zorunlu Alanları Doğru Bir Şekilde Eksiksiz Doldurunuz!</p>
+    @using (Html.BeginForm("EditUser", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.TextBoxFor(m => m.Id, new { @Value = Model.Id, @type = "hidden" })
+
+<div class="pd-30 pd-sm-40 bg-gray-200">
+    <div class="row row--md align-items-center mg-b-20">
+        <div class="col-md-2" style="padding-top:10px; margin-left:15px;">
+            <label class="form-label mg-b-0"> Ad: <span class="tx-danger">*</span></label>
+        </div>
+        <div class="col-md-3 mg-t-5 mg-md-t-0" style="padding-top:10px;">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", type = "text", placeholder = "İsim Giriniz", @required = "required" })
+        </div>
+        <div class="col-md-2" style="padding-top:10px; margin-left:15px;">
+            <label class="form-label mg-b-0">Soyad: <span class="tx-danger">*</span></label>
+        </div>
+        <div class="col-md-4 mg-t-5 mg-md-t-0" style="padding-top:10px;">
+            @Html.TextBoxFor(model => model.Surname, new { @class = "form-control", type = "text", placeholder = "Soyadınızı Giriniz", @required = "required" })
+        </div>
+
+
+    </div>
+    <div class="row row--md align-items-center mg-b-20">
+        <div class="col-md-2" style="padding-top:10px; margin-left:15px;">
+            <label class="form-label mg-b-0">Kullanıcı Adı:<span class="tx-danger">*</span></label>
+        </div>
+        <div class="col-md-3 mg-t-5 mg-md-t-0" style="padding-top:10px;">
+            @Html.TextBoxFor(model => model.Username, new { @class = "form-control", type = "text", placeholder = "Kullanıcı Adını Giriniz", @required = "required" })
+        </div>
+        <div class="col-md-2" style="padding-top:10px; margin-left:15px;">
+            <label class="form-label mg-b-0">Email: <span class="tx-danger">*</span></label>
+        </div>
+        <div class="col-md-4 mg-t-5 mg-md-t-0" style="padding-top:10px;">
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", type = "email", placeholder = "Email Giriniz" })
+
+        </div>
+    </div>
+
+    <div class="row row--md align-items-center mg-b-20">
+        <div class="col-md-2" style="padding-top:10px; margin-left:15px;">
+            <label class="form-label mg-b-0">Kullanıcı Rolü:<span class="tx-danger">*</span></label>
+        </div>
+        <div class="col-md-3 mg-t-4 mg-md-t-0" style="padding-top:10px;">
+            @Html.TextBoxFor(model => model.Role, new { @class = "form-control", type = "text", @required = "required", placeholder = "User, Admin..." })
+        </div>
+        <div class="col-md-2" style="padding-top:10px; margin-left:15px;">
+            <label class="form-label mg-b-0">Okul Adı: <span class="tx-danger">*</span></label>
+        </div>
+        <div class="col-md-4 mg-t-5 mg-md-t-0" style="padding-top:10px;">
+            @Html.TextBoxFor(model => model.SchoolName, new { @class = "form-control", type = "text", placeholder = "İstanbul Kültür Üniversitesi...", @required = "required" })
+        </div>
+    </div>
+    <div class="row row--md align-items-center mg-b-20">
+        <div class="col-md-2" style="padding-top:10px; margin-left:15px;">
+            <label class="form-label mg-b-0">Telefon Numarası:<span class="tx-danger">*</span></label>
+        </div>
+        <div class="col-md-3 mg-t-4 mg-md-t-0" style="padding-top:10px;">
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", type = "text", @required = "required", placeholder = "053..." })
+        </div>
+        <div class="col-md-2" style="padding-top:10px; margin-left:15px;">
+            <label class="form-label mg-b-0">Departman Id: <span class="tx-danger">*</span></label>
+        </div>
+        <div class="col-md-4 mg-t-5 mg-md-t-0" style="padding-top:10px;">
+            @Html.TextBoxFor(model => model.DepartmentId, new { @class = "form-control", type = "text", placeholder = "1, 2, 3...", @required = "required" })
+        </div>
+    </div>
+    <hr />
+
+    <row style="position:sticky; left:1100px;">
+        <button class="btn btn-az-secondary pd-x-30 mg-r-5" type="submit" style="margin-bottom:5px;"><i class="fa fa-save"></i>Kaydet</button>
+    </row>
+
+</div>
+    }
+
+</div>

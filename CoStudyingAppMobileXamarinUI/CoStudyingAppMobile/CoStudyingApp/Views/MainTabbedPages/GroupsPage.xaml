@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:YeatyAppMobile.CustomControls"
+             x:Class="YeatyAppMobile.Views.MainTabbedPages.GroupsPage">
+    <ContentPage.IconImageSource>
+
+        <FontImageSource FontFamily="{StaticResource FontAwesomeLight}" Glyph="book-open"></FontImageSource>
+
+    </ContentPage.IconImageSource>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource defaultShadedWhiteColor}" Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Start">
+
+
+                <StackLayout x:Name="stackHeader" Margin="12,16,16,8" Orientation="Horizontal" Spacing="14">
+
+
+                    <Label Text="Gruplar" TextColor="{StaticResource defaultBlackColor}" FontSize="16" FontFamily="CustomMedium"
+                           HorizontalOptions="StartAndExpand" Margin="0"></Label>
+
+                    <!--<Frame Padding="6,2,2,2" HorizontalOptions="End" BackgroundColor="Transparent" CornerRadius="3">
+
+                        <Label Text="bell" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}"></Label>
+
+                    </Frame>-->
+
+
+
+                </StackLayout>
+
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="0" Opacity="0.25" ></BoxView>
+            </StackLayout>
+            <StackLayout x:Name="stackSearchGroupHeader" Margin="24,12,12,0">
+                <Label x:Name="lblSearchGroupsHeader" FontFamily="CustomBold" FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            
+                            <Span Text="Çalışma grubu arayın"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+            <StackLayout x:Name="stackSearchBar" Margin="6,8,6,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="2"
+                             VerticalOptions="Start">
+
+
+                <Frame BorderColor="{StaticResource defaultFoggyColor}" BackgroundColor="Transparent"
+                           HorizontalOptions="FillAndExpand" Margin="12,2,4,12"
+                       Padding="0" CornerRadius="8" HasShadow="True">
+
+                    <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                 Margin="0">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
+                                 Margin="8,4,16,4" BackgroundColor="Transparent" Spacing="8">
+
+
+                            <custom:XEntry HorizontalOptions="FillAndExpand" Margin="0,0,8,0" VerticalOptions="CenterAndExpand"
+                                       FontSize="13" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomMedium"  Placeholder="Grup kodu girin"
+                                       x:Name="entrySearch" PlaceholderColor="{StaticResource defaultFoggyColor}" ></custom:XEntry>
+
+                            <Label FontFamily="{StaticResource FontAwesomeSolid}" TextColor="{StaticResource defaultBlackColor}"
+                               FontSize="18" Text="search" VerticalOptions="CenterAndExpand" Margin="8,0,0,0"
+                               >
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="tapSearch" Tapped="tapSearch_Tapped"></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+
+
+
+                        </StackLayout>
+                    </StackLayout>
+
+
+                </Frame>
+             
+            </StackLayout>
+
+            <StackLayout x:Name="stackGroupsHeader" Margin="24,12,12,12" IsVisible="False" Opacity="0">
+                <Label x:Name="lblMyGroupsHeader" FontFamily="CustomBold" FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+
+                            <Span Text="Çalışma gruplarım (3)"  x:Name="lblStudyGroupsHeader"
+                                  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <ScrollView Orientation="Both" Margin="18,0,0,0" x:Name="scrollViewMyGroups" Opacity="0"  IsVisible="False" HorizontalScrollBarVisibility="Never">
+                <FlexLayout x:Name="insideScrollViewMyGroupsFlexLayout">
+
+                    <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSelectionTab1" IsVisible="False" ClassId="group1"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                            <Label x:Name="lblStudyGroupName1" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                            <Span Text="12 " x:Name="lblStudyGroupUserCount1" ></Span>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+
+
+                    </Frame>
+
+                    <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSelectionTab2"  IsVisible="False"  ClassId="group2"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                            <Label x:Name="lblStudyGroupName2" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                            <Span Text="12 " x:Name="lblStudyGroupUserCount2" ></Span>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+
+
+                    </Frame>
+
+                    <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSelectionTab3"  IsVisible="False"  ClassId="group3"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                            <Label x:Name="lblStudyGroupName3" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                            <Span Text="12 " x:Name="lblStudyGroupUserCount3" ></Span>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+
+
+                    </Frame>
+
+                    <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSelectionTab4"  IsVisible="False"  ClassId="group4"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                            <Label x:Name="lblStudyGroupName4" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                            <Span Text="12 " x:Name="lblStudyGroupUserCount4" ></Span>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+
+
+                    </Frame>
+
+                    <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSelectionTab5"  IsVisible="False"  ClassId="group5"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                            <Label x:Name="lblStudyGroupName5" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                            <Span Text="12 " x:Name="lblStudyGroupUserCount5" ></Span>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+
+                    </Frame>
+
+                </FlexLayout>
+            </ScrollView>
+
+
+            <StackLayout x:Name="stackSuggestedGroupsHeader" Margin="24,12,12,12" IsVisible="False" Opacity="0">
+                <Label x:Name="lblSuggestedGroupsHeader" FontFamily="CustomBold" FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+
+                            <Span Text="Sizin için önerilen çalışma grupları"  TextColor="{StaticResource defaultBlackColor}"></Span>
+
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <ScrollView Orientation="Both" Margin="18,0,0,0" x:Name="scrollViewSuggestedGroups" Opacity="0"  IsVisible="False" HorizontalScrollBarVisibility="Never">
+                <FlexLayout x:Name="insideScrollViewSuggestedGroupsFlexLayout">
+
+                    <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSuggestedTab1" IsVisible="False" ClassId="suggested1"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                            <Label x:Name="lblSuggestedGroupName1" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                            <Span Text="12 " x:Name="lblSuggestedGroupUserCount1" ></Span>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+
+                    </Frame>
+
+                    <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSuggestedTab2"  IsVisible="False" ClassId="suggested2"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                            <Label x:Name="lblSuggestedGroupName2" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                            <Span Text="12 " x:Name="lblSuggestedGroupUserCount2" ></Span>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+
+
+                    </Frame>
+
+                    <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSuggestedTab3"  IsVisible="False" ClassId="suggested3"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                            <Label x:Name="lblSuggestedGroupName3" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                            <Span Text="12 " x:Name="lblSuggestedGroupUserCount3" ></Span>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+
+
+                    </Frame>
+
+                    <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSuggestedTab4"  IsVisible="False" ClassId="suggested4"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                            <Label x:Name="lblSuggestedGroupName4" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                            <Span Text="12 " x:Name="lblSuggestedGroupUserCount4" ></Span>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+
+
+                    </Frame>
+
+                    <Frame CornerRadius="8"  BackgroundColor="{StaticResource defaultShadedWhiteColor}" 
+                                   x:Name="frameSuggestedTab5"  IsVisible="False" ClassId="suggested5"
+                               BorderColor="{StaticResource defaultShadedWhiteColor}" HasShadow="False" Margin="6,0,0,0"  HeightRequest="120" WidthRequest="160"
+                               Padding="12,8,12,8" HorizontalOptions="Start" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" >
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2,6,2,6">
+
+                            <Label x:Name="lblSuggestedGroupName5" Text="" FontFamily="CustomBold" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Label>
+                            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label  FontFamily="CustomBold" FontSize="14" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="users " FontFamily="{StaticResource FontAwesomeSolid}"  FontSize="14"></Span>
+                                            <Span Text="12 " x:Name="lblSuggestedGroupUserCount5" ></Span>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapGoToGroup_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+
+
+                    </Frame>
+
+                </FlexLayout>
+            </ScrollView>
+
+            <StackLayout Margin="16,0,16,16" VerticalOptions="EndAndExpand" >
+
+                <Frame HorizontalOptions="FillAndExpand" Padding="0,16,0,16" Margin="0" CornerRadius="5" IsClippedToBounds="True"  BorderColor="{StaticResource defaultFoggyColor}"
+                           HasShadow="False" BackgroundColor="Transparent" Opacity="1" x:Name="frameStart">
+
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Çalışma grubu oluşturun" FontSize="14" TextColor="{StaticResource defaultFoggyColor}"
+                               FontFamily="CustomBold"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapCreateRoom" Tapped="tapCreateRoom_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                
+                </Frame>
+
+            </StackLayout>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

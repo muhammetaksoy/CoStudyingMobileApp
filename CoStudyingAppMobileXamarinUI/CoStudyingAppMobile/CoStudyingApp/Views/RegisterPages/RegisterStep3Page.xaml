@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+               xmlns:custom="clr-namespace:YeatyAppMobile.CustomControls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeatyAppMobile.Views.RegisterPages.RegisterStep3Page">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="14,24,14,16" x:Name="stackNavigation">
+
+                <Frame x:Name="frameBackButton" BackgroundColor="Transparent" Padding="6" CornerRadius="3" HorizontalOptions="Start">
+
+
+                    <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left"
+                           FontSize="22" TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="Center"
+                           VerticalOptions="Center"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+
+                </Frame>
+
+            </StackLayout>
+
+            <Label FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="16"
+                               x:Name="lblHeaderSection1"
+                   Margin="12,0,16,16"
+                           Text="Eposta adresinizi girin ve şifre belirleyin" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+
+
+            </Label>
+
+            <StackLayout x:Name="stackInfos" Spacing="10" Margin="12,10,12,0" HorizontalOptions="FillAndExpand"
+                         >
+
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,8" Margin="0" IsClippedToBounds="True">
+
+                    <custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}" 
+                                   Placeholder="Eposta" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   FontSize="14" x:Name="entryEmail"
+                                   Completed="entryEmail_Completed"
+                                   TextChanged="entryEmail_TextChanged"
+                                   ></custom:XEntry>
+
+                </Frame>
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,8" Margin="0" IsClippedToBounds="True">
+
+                    <custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}"
+                                   IsPassword="true"
+                                   Placeholder="Şifre" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   FontSize="14" x:Name="entryPassword"
+                                   Completed="entryPassword_Completed"
+                                   TextChanged="entryPassword_TextChanged"
+                                   ></custom:XEntry>
+
+                </Frame>
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,6" Margin="0,0,0,8" IsClippedToBounds="True">
+
+                    <custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}"
+                                   IsPassword="true"
+                                   Placeholder="Şifre tekrar" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   FontSize="14" x:Name="entryRePassword"
+                                   Completed="entryRePassword_Completed"
+                                   TextChanged="entryRePassword_TextChanged"
+                                   ></custom:XEntry>
+
+                </Frame>
+
+                <StackLayout Orientation="Horizontal"
+                         x:Name="stackPrivacy"
+                         IsVisible="True"
+                         HorizontalOptions="StartAndExpand"
+                         VerticalOptions="Center">
+                    <CheckBox x:Name="checkPrivacy"
+                        Color="{StaticResource defaultRedColor}"
+                        IsChecked="False"
+                        CheckedChanged="checkPrivacy_CheckedChanged"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+                    <Label 
+                     VerticalOptions="Center"    
+                     HorizontalOptions="Center"
+                     VerticalTextAlignment="Center"
+                     HorizontalTextAlignment="Start"
+                     FontFamily="CustomMedium"
+                        FontSize="12"
+                     x:Name="myName"
+                     TextColor="{StaticResource defaultFoggyColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Kaydınızı tamamlamak için "/>
+                                <Span Text="kullanıcı sözleşmesini" TextColor="{StaticResource defaultRedColor}">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="privacyPolicy_Tapped"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span Text=" kabul edin"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="privacyPolicy" Tapped="privacyPolicy_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+
+
+
+
+
+            </StackLayout>
+
+            <StackLayout x:Name="stackProceed" VerticalOptions="EndAndExpand" Margin="12">
+
+
+                <Frame HorizontalOptions="FillAndExpand" Padding="0,16,0,16" Margin="0" CornerRadius="5" 
+                       IsClippedToBounds="True" 
+                           HasShadow="False" BackgroundColor="{StaticResource defaultBlackColor}" Opacity="0.3" 
+                      x:Name="frameProceed">
+
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Devam et" FontSize="14" TextColor="White"
+                               FontFamily="CustomBold"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapProceed" Tapped="tapProceed_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+
+
+                </Frame>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

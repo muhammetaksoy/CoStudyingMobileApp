@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            SelectedTabColor="#ed3938"
+             UnselectedTabColor="#bfbfbf"
+             BarBackgroundColor="#fafafa"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:YeatyAppMobile.Views.HomeTabbedPages"        
+             x:Class="YeatyAppMobile.Views.HomeTabbedPages.HomeTabbedPage">
+
+    <!--<ContentPage Title="" x:Name="explorePage">
+        <ContentPage.IconImageSource>
+
+            <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="search"></FontImageSource>
+
+        </ContentPage.IconImageSource>
+
+
+    </ContentPage>-->
+    <!--<local:FeedPage></local:FeedPage>
+    <local:StorePage></local:StorePage>
+    <local:MyQRCodesPage></local:MyQRCodesPage>
+    <local:WalletPage></local:WalletPage>
+    <local:ProfilePage></local:ProfilePage>-->
+    <!--<local:FeedPage></local:FeedPage>
+    <local:GroupsPage></local:GroupsPage>
+    <local:ClubsPage></local:ClubsPage>-->
+    <!--<local:CalendarPage></local:CalendarPage>
+    <local:MyProfilePage></local:MyProfilePage>-->
+   
+</TabbedPage>

@@ -1,0 +1,83 @@
+﻿@using CoStudyingPanel.Models
+@using PagedList.Mvc
+@using PagedList
+
+@model List<DepartmentAnnouncement>
+
+@{
+    DatabaseContext db = new DatabaseContext();
+    ViewBag.Title = "Duyuruları Görüntüle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    int i = 1;
+}
+
+<div class="az-content-body">
+    <div class="az-content-breadcrumb">
+        <span>Üniversiteler</span>
+        <span>Duyuruları Görüntüle</span>
+    </div>
+    <h2 class="az-content-title">Duyuruları Görüntüle &nbsp; <i class="fa fa-list-ol"></i></h2>
+
+    <div class="table-responsive">
+        <table class="table table-hover mg-b-0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Metin</th>
+                    <th>Departman Adı</th>
+                    <th>BAŞLANGIÇ TARİHİ</th>
+                    <th>BİTİŞ TARİHİ</th>
+
+                    <th>İŞLEMLER</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DepartmentAnnouncement item in Model)
+                {
+                <tr>
+                    <th scope="row">@(i++)</th>
+                    <td>
+                        @item.Text
+                    </td>
+                    <td>@item.Department.DepartmentName</td>
+
+                    <td>@CustomTime.GetDateTimeString(item.begin)</td>
+                    <td>@CustomTime.GetDateTimeString(item.finish)</td>
+                    <td>
+                        @{
+                            string warning = "warning" + i;
+                        }
+                        <a href="" class="btn btn-with-icon btn-danger btn-rounded" data-toggle="modal" data-target="#@warning"><i class="typcn typcn-delete"></i>&nbsp; Kaldır</a>
+                        <div id="@warning" class="modal fade effect-just-me">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content modal-content-demo">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title">Uyarı Mesajı!</h6>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Yapmak Üzere Olduğunuz İşlem Geri Alınamaz!</h6>
+                                        <p>Duyuru Silme İşlemi Bir Kez Yapıldığında Geri Alınamaz! </p>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <a href="/Home/RemoveAnnouncement/@item.Id" type="button" class="btn btn-primary">Devam Et</a>
+
+                                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Geri</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+        <br /><br />
+
+    </div>
+</div>

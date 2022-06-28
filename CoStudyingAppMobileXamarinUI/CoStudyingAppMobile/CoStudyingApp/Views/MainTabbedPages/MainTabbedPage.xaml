@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"            
+             SelectedTabColor="#ed3938"
+             UnselectedTabColor="#bfbfbf"
+             BarBackgroundColor="#fafafa"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:YeatyAppMobile.Views.MainTabbedPages"    
+             x:Class="YeatyAppMobile.Views.MainTabbedPages.MainTabbedPage">
+  <!--Pages can be added as references or inline-->
+   <local:FeedPage></local:FeedPage>
+    <local:GroupsPage></local:GroupsPage>
+    <!--<local:ClubsPage></local:ClubsPage>-->
+    <local:CalendarPage></local:CalendarPage>
+    <local:MyProfilePage></local:MyProfilePage>
+</TabbedPage>

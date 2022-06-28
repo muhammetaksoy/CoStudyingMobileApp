@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="YeatyAppMobile.Views.HomeTabbedPages.MyQRCodesPage">
+    <ContentPage.IconImageSource>
+
+        <FontImageSource FontFamily="{StaticResource FontAwesomeLight}" Glyph="barcode-read"></FontImageSource>
+
+    </ContentPage.IconImageSource>
+    <ContentPage.Content>
+
+        <StackLayout x:Name="stackGeneral" Margin="0" Padding="0" Spacing="0">
+            <StackLayout BackgroundColor="{StaticResource defaultShadedWhiteColor}" Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Start">
+
+
+                <StackLayout x:Name="stackHeader" Margin="12,16,16,8" Orientation="Horizontal" Spacing="8">
+
+
+                    <Label Text="QR Kodlarım" TextColor="{StaticResource defaultBlackColor}" FontSize="16" FontFamily="CustomMedium"
+                           HorizontalOptions="StartAndExpand" Margin="0"></Label>
+
+
+                    <Frame Padding="6,2,2,2" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" CornerRadius="3">
+
+                        <Label Text="qrcode" FontFamily="{StaticResource FontAwesomeLight}" FontSize="16" 
+                               TextColor="{StaticResource defaultBlackColor}"></Label>
+
+                    </Frame>
+
+                </StackLayout>
+
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="0" Opacity="0.25" ></BoxView>
+            </StackLayout>
+            <ScrollView x:Name="mainScrollView" Padding="0">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0">
+                  
+                    <Grid x:Name="stackSection1" Margin="0,0,0,12">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Frame x:Name="frameImage1" BackgroundColor="{StaticResource defaultFoggyColor}" Padding="0" HeightRequest="200"
+                           CornerRadius="0" Grid.Column="0"  IsClippedToBounds="True" HorizontalOptions="FillAndExpand"
+                           >
+                            <Image x:Name="imgCreateQR" Source="cafeImage6.jpg" HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFill"></Image>
+
+
+                        </Frame>
+                        <Frame BackgroundColor="{StaticResource defaultBlackColor}" Padding="0" CornerRadius="0"
+                               Opacity="0.5" HorizontalOptions="FillAndExpand" Grid.Column="0" IsClippedToBounds="True"
+                               VerticalOptions="FillAndExpand"
+                               >
+                            
+                            
+                        </Frame>
+                        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="14,12,14,24">
+
+                            <Label Text="qrcode" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" HorizontalOptions="CenterAndExpand"
+                                   Margin="0,12,0,0" TextColor="{StaticResource defaultWhiteColor}"></Label>
+                            <Label Text="QR Kod ile geri ödeme alın" FontSize="14" Margin="12,12,12,0"
+                               TextColor="{StaticResource defaultWhiteColor}" FontFamily="CustomBold" HorizontalOptions="CenterAndExpand"></Label>
+                            <Label Text="Şimdi QR Kod oluşturarak yetkiliye gösterin ve hesabın %10 kadarı geri bakiye olarak eklensin!" 
+                               FontSize="10" HorizontalTextAlignment="Center" Margin="0,0,2,0" LineHeight="1.2"
+                               TextColor="{StaticResource defaultWhiteColor}" FontFamily="CustomBold" HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand" Opacity="0.8"></Label>
+                            <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                                   CornerRadius="3" BackgroundColor="{StaticResource defaultLightRedColor}" Padding="16,10,16,10">
+
+                                <Label Text="Şimdi oluştur" FontFamily="CustomMedium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                       FontSize="12" TextColor="{StaticResource defaultWhiteColor}"></Label>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="tapCreatePaybackQR" Tapped="tapCreatePaybackQR_Tapped"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+
+                            </Frame>
+
+
+
+                        </StackLayout>
+
+
+                    </Grid>
+
+                    <Grid HorizontalOptions="Center" x:Name="stackLoading" VerticalOptions="CenterAndExpand" IsVisible="False"
+                             Padding="5" BackgroundColor="Transparent"  Margin="0,0,0,120"  >
+                        <lottie:AnimationView x:Name="lottieLoading" Animation="loadingCircles.json" AutoPlay="True" 
+                              HeightRequest="200" WidthRequest="200" RepeatMode="Infinite"
+                                      VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></lottie:AnimationView>
+
+
+                    </Grid>
+
+                    <StackLayout x:Name="stackMyCodes" HorizontalOptions="FillAndExpand" Margin="12,12,12,0" IsVisible="False" Opacity="1" >
+
+                        <StackLayout Orientation="Horizontal" Margin="0,0,12,6">
+
+                            <Label FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="18"
+                               x:Name="lblHeaderSection2"
+                           Text="QR kodlarınızı kullanın" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+                            </Label>
+                            <!--<Label FontFamily="CustomBold" TextColor="{StaticResource defaultFoggyColor}" FontSize="10"
+                           Text="Tümünü gör" HorizontalOptions="EndAndExpand" VerticalOptions="Center"></Label>-->
+                        </StackLayout>
+                        <Label FontFamily="CustomMedium" TextColor="{StaticResource defaultBlackColor}" FontSize="12.5" 
+                           Margin="0,0,12,0"
+                           Text="Hesabınıza eklediğiniz QR Kodları görevliye göstererek kullanmaya hemen başlayın. " 
+                           HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Label>
+
+
+                        <!--<CollectionView HorizontalOptions="FillAndExpand" x:Name="collectionViewItems" >
+
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="6" VerticalItemSpacing="4" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand" Margin="0"
+                                          Grid.Row="0" Grid.Column="0" BindingContext="{Binding .}" >
+
+                                        <Frame Grid.Column="0" HorizontalOptions="FillAndExpand" CornerRadius="3" Padding="0"
+                                       HeightRequest="180" x:Name="frameImage"
+                                       BackgroundColor="{StaticResource defaultShadedWhiteColor}" IsClippedToBounds="True">
+
+                                            <Image Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"
+                                           Source="{Binding PhotoPath}"></Image>
+
+
+                                        </Frame>
+
+                                        <Frame Grid.Column="0" HorizontalOptions="FillAndExpand" CornerRadius="3" Padding="0"
+                                       HeightRequest="180" Opacity="0.7"
+                                       BackgroundColor="{StaticResource defaultBlackColor}" IsClippedToBounds="True" ></Frame>
+                                        <Frame Padding="10,2,10,2" BorderColor="{StaticResource defaultShadedWhiteColor}" Opacity="0.12" Grid.Column="0"
+                                           CornerRadius="3" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
+
+                                            <Label Text="qrcode" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="120" 
+                               TextColor="{StaticResource defaultShadedWhiteColor}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+
+                                        </Frame>
+
+                                        <StackLayout Grid.Column="0" HorizontalOptions="FillAndExpand"  Padding="0"
+                                       HeightRequest="180" Spacing="0"
+                                       BackgroundColor="Transparent" >
+
+                                            <StackLayout  HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="Start" Orientation="Horizontal" Margin="6,6,6,0">
+                                                <Label Text="map-marker-alt" FontFamily="{StaticResource FontAwesomeLight}" VerticalOptions="Center"
+                                               FontSize="18" TextColor="{StaticResource defaultWhiteColor}"></Label>
+                                                <Label Text="{Binding RestaurantName}" FontSize="10" Margin="0" VerticalOptions="Center"
+                               TextColor="{StaticResource defaultWhiteColor}" FontFamily="CustomMedium" HorizontalOptions="CenterAndExpand"></Label>
+                                            </StackLayout>
+
+
+
+                                        </StackLayout>
+                                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="12,0,12,0" Spacing="0">
+                                            <Label Text="{Binding Title}" FontSize="16" Margin="0" VerticalOptions="Center"
+                               TextColor="{StaticResource defaultWhiteColor}" FontFamily="CustomBold" HorizontalOptions="CenterAndExpand"></Label>
+                                            <Label Text="{Binding SubText}" FontSize="8" Margin="0" VerticalOptions="Center"
+                               TextColor="{StaticResource defaultShadedWhiteColor}" FontFamily="CustomMedium" HorizontalOptions="CenterAndExpand"></Label>
+                                        </StackLayout>
+
+
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+
+                        </CollectionView>-->
+
+                        <Grid IsVisible="True" Opacity="1"
+                             x:Name="gridQRList" RowSpacing="8" ColumnSpacing="6" Margin="0,10,0,8">
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand" x:Name="stackNoQr" IsVisible="False" Grid.ColumnSpan="2"
+                                         Margin="6,12,6,0">
+
+                                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" Opacity="0.2"
+                                         Margin="0,0,0,12"></BoxView>
+                                <Label FontSize="12" TextColor="{StaticResource defaultFoggyColor}" FontFamily="CustomMedium" HorizontalTextAlignment="Center"
+                                    x:Name="lblNoQR" Text="Kullanılabilecek bir QR Kodunuz bulunmuyor. Yeaty kampanyalarına hemen göz atın"></Label>
+                                <Button FontFamily="CustomBold" BackgroundColor="{StaticResource defaultLightRedColor}" Margin="0,16,0,0"
+                                      Text="KAMPANYALARA GİT" TextColor="{StaticResource defaultWhiteColor}" CornerRadius="3" 
+                                        Clicked="frameGoToCampaigns_Clicked"
+                                    FontSize="12"    Padding="12,6,12,6" HorizontalOptions="CenterAndExpand" x:Name="frameGoToCampaigns" ></Button>
+                                
+                                
+                            </StackLayout>
+                            
+                            <!--<Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>-->
+
+                            <!--<Grid HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" >
+
+                                <Frame Grid.Column="0" HorizontalOptions="FillAndExpand" CornerRadius="3" Padding="0"
+                                       HeightRequest="180" x:Name="frameImage"
+                                       BackgroundColor="{StaticResource defaultShadedWhiteColor}" IsClippedToBounds="True">
+
+                                    <Image Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"
+                                           Source="cappucino.jpg"></Image>
+
+
+                                </Frame>
+
+                                <Frame Grid.Column="0" HorizontalOptions="FillAndExpand" CornerRadius="3" Padding="0"
+                                       HeightRequest="180" Opacity="0.7"
+                                       BackgroundColor="{StaticResource defaultBlackColor}" IsClippedToBounds="True" ></Frame>
+                                <Frame Padding="10,2,10,2" BorderColor="{StaticResource defaultShadedWhiteColor}" Opacity="0.12" Grid.Column="0"
+                                           CornerRadius="3" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
+
+                                    <Label Text="qrcode" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="120" 
+                               TextColor="{StaticResource defaultShadedWhiteColor}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+
+                                </Frame>
+
+                                <StackLayout Grid.Column="0" HorizontalOptions="FillAndExpand"  Padding="0"
+                                       HeightRequest="180" Spacing="0"
+                                       BackgroundColor="Transparent" >
+
+                                    <StackLayout  HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="Start" Orientation="Horizontal" Margin="6,6,6,0">
+                                        <Label Text="map-marker-alt" FontFamily="{StaticResource FontAwesomeLight}" VerticalOptions="Center"
+                                               FontSize="18" TextColor="{StaticResource defaultWhiteColor}"></Label>
+                                        <Label Text="De'la Carte Cafe" FontSize="10" Margin="0" VerticalOptions="Center"
+                               TextColor="{StaticResource defaultWhiteColor}" FontFamily="CustomMedium" HorizontalOptions="CenterAndExpand"></Label>
+                                    </StackLayout>
+
+
+
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="12,0,12,0" Spacing="0">
+                                    <Label Text="Cappucino" FontSize="16" Margin="0" VerticalOptions="Center"
+                               TextColor="{StaticResource defaultWhiteColor}" FontFamily="CustomBold" HorizontalOptions="CenterAndExpand"></Label>
+                                    <Label Text="yeaty puanlar ile ödendi" FontSize="8" Margin="0" VerticalOptions="Center"
+                               TextColor="{StaticResource defaultShadedWhiteColor}" FontFamily="CustomMedium" HorizontalOptions="CenterAndExpand"></Label>
+                                </StackLayout>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="tapItem" Tapped="tapItem_Tapped"></TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+
+                            </Grid>-->
+                            
+                        </Grid>
+                        
+                        
+
+
+                    </StackLayout>
+
+
+
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

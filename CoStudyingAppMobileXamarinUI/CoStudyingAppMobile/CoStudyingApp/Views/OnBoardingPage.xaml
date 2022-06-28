@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeatyAppMobile.Views.OnBoardingPage">
+    <ContentPage.Content>
+
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout IsVisible="False" x:Name="rotationGrid" 
+                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   BackgroundColor="{StaticResource defaultWhiteColor}">
+
+                <ActivityIndicator IsVisible="True"
+                           IsRunning="True"
+                           Color="{StaticResource defaultLightRedColor}"
+                           IsEnabled="True"
+                           x:Name="indicator"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+
+
+            </StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,0" x:Name="mainGrid" IsVisible="False">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Image Aspect="AspectFill" Grid.Row="0" Grid.RowSpan="2"  HorizontalOptions="FillAndExpand" Source="onboardingImage1.jpg" VerticalOptions="FillAndExpand"></Image>
+                <Frame BackgroundColor="{StaticResource defaultBlackColor}" Opacity="0.7" HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand" Margin="0" Grid.Row="0" Grid.RowSpan="2"></Frame>
+
+                <StackLayout Grid.Row="1" Margin="16,0,16,16"  VerticalOptions="End">
+
+                    <Frame HorizontalOptions="FillAndExpand" Padding="0,16,0,16" Margin="0" CornerRadius="5" IsClippedToBounds="True" 
+                           HasShadow="False" BackgroundColor="{StaticResource defaultRedColor}" Opacity="0" x:Name="frameStart">
+
+                        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Hadi başlayalım!" FontSize="14" TextColor="White"
+                               FontFamily="CustomBold"></Label>
+
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapStart" Tapped="tapStart_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+
+                    </Frame>
+
+                </StackLayout>
+
+                <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Margin="10,10,10,10">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+
+
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0" Spacing="8" Margin="16,0,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Label FontFamily="CustomBold" VerticalOptions="Start" Text="CoStudy ile" TextColor="{StaticResource defaultLightRedColor}" FontSize="42"
+                           Margin="0,0,0,20" x:Name="lblMainHeader" Opacity="0"></Label>
+                        <Label  TextColor="{StaticResource defaultWhiteColor}"  VerticalOptions="Center" Opacity="0.0" x:Name="lblProp1">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="check" FontFamily="{StaticResource FontAwesomeLight}" FontSize="14"></Span>
+                                    <Span Text="  Ödev ve projelerini planla" FontSize="16"  FontFamily="CustomMedium"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label  TextColor="{StaticResource defaultWhiteColor}"  VerticalOptions="Center" Opacity="0" x:Name="lblProp2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="check" FontFamily="{StaticResource FontAwesomeLight}" FontSize="14"></Span>
+                                    <Span Text="  Ortak çalışma gruplarına dahil ol" FontSize="16"  FontFamily="CustomMedium"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label  TextColor="{StaticResource defaultWhiteColor}"  VerticalOptions="Center" Opacity="0"  x:Name="lblProp3">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="check" FontFamily="{StaticResource FontAwesomeLight}" FontSize="14"></Span>
+                                    <Span Text="  Son tarih bildirimleri al" FontSize="16"  FontFamily="CustomMedium"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label  TextColor="{StaticResource defaultWhiteColor}"  VerticalOptions="Center" Opacity="0"  x:Name="lblProp4">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="check" FontFamily="{StaticResource FontAwesomeLight}" FontSize="14"></Span>
+                                    <Span Text="  Ortak ders alanları bul" FontSize="16"  FontFamily="CustomMedium"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label  TextColor="{StaticResource defaultWhiteColor}"  VerticalOptions="Center" Opacity="0"  x:Name="lblProp5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="check" FontFamily="{StaticResource FontAwesomeLight}" FontSize="14"></Span>
+                                    <Span Text="  Kulüp ve etkinlik bildirimleri al" FontSize="16"  FontFamily="CustomMedium"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </StackLayout>
+
+                    <StackLayout  Grid.Row="1" Spacing="4" VerticalOptions="FillAndExpand" Margin="0,50,0,0">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            <!--<Frame HorizontalOptions="FillAndExpand" Padding="0,12,0,12" Margin="0" CornerRadius="5" IsClippedToBounds="True"
+                           HasShadow="False"  BackgroundColor="Transparent" BorderColor="White"  VerticalOptions="Center">
+
+                            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Giriş yap" FontSize="14" TextColor="White"
+                               FontFamily="CustomBold"></Label>
+
+                            -->
+                            <!--<Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="tapLogin" Tapped="tapLogin_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>-->
+                            <!--
+
+                        </Frame>-->
+                            <!--<Frame HorizontalOptions="FillAndExpand" Padding="0,12,0,12" Margin="0" CornerRadius="3" IsClippedToBounds="True" IsVisible="False"
+                           HasShadow="False" x:Name="frameRegister" BackgroundColor="Transparent" BorderColor="White"  VerticalOptions="Center">
+
+                            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Kayıt ol" FontSize="14" TextColor="White"
+                               FontFamily="CustomBold"></Label>
+
+                            -->
+                            <!--<Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="tapSignUp" Tapped="tapSignUp_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>-->
+                            <!--
+
+                        </Frame>-->
+                        </StackLayout>
+                        <StackLayout Spacing="8" VerticalOptions="EndAndExpand" >
+                            <!--<Frame HorizontalOptions="FillAndExpand" Padding="0,12,0,12" Margin="0" CornerRadius="5" IsClippedToBounds="True"
+                           HasShadow="False" BackgroundColor="#3b5998" VerticalOptions="Center">
+
+                            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Facebook ile devam et" FontSize="14" TextColor="White"
+                               FontFamily="CustomBold"></Label>
+
+
+                            -->
+                            <!--<Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="tapFacebookLogin" Tapped="tapFacebookLogin_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>-->
+                            <!--
+
+
+                        </Frame>-->
+
+                            <!--<Frame HorizontalOptions="FillAndExpand" Padding="0,12,0,12" Margin="0" CornerRadius="5" IsClippedToBounds="True"
+                           HasShadow="False" BackgroundColor="#212121" VerticalOptions="Center" x:Name="frameApple" IsVisible="False">
+
+                            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Apple ile devam et" FontSize="14" TextColor="White"
+                               FontFamily="CustomBold"></Label>
+
+                            -->
+                            <!--<Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="tapAppleLogin" Tapped="tapAppleLogin_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>-->
+                            <!--
+
+                        </Frame>-->
+                        </StackLayout>
+                    </StackLayout>
+
+
+                </Grid>
+
+
+
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

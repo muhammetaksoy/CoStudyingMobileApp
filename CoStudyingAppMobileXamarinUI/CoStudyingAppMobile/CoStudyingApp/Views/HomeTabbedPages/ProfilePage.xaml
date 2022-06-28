@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeatyAppMobile.Views.HomeTabbedPages.ProfilePage">
+    <ContentPage.IconImageSource>
+
+        <FontImageSource FontFamily="{StaticResource FontAwesomeLight}" Glyph="user-alt"></FontImageSource>
+
+    </ContentPage.IconImageSource>
+    <ContentPage.Content>
+        <StackLayout x:Name="stackGeneral" Margin="0" Padding="0" Spacing="0">
+            <StackLayout BackgroundColor="{StaticResource defaultShadedWhiteColor}" Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Start">
+
+
+                <StackLayout x:Name="stackHeader" Margin="12,16,16,8" Orientation="Horizontal" Spacing="14">
+
+
+                    <Label Text="Hesabım" TextColor="{StaticResource defaultBlackColor}" FontSize="16" FontFamily="CustomMedium"
+                           HorizontalOptions="StartAndExpand" Margin="0"></Label>
+
+                    <Frame Padding="6,2,2,2" HorizontalOptions="End" BackgroundColor="Transparent" CornerRadius="3">
+
+                        <Label Text="bell" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}"></Label>
+
+                    </Frame>
+
+
+                    
+                </StackLayout>
+
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="0" Opacity="0.25" ></BoxView>
+            </StackLayout>
+            <ScrollView Margin="0" x:Name="mainScrollView">
+                <StackLayout HorizontalOptions="FillAndExpand">
+
+
+                    <Grid HorizontalOptions="FillAndExpand" Margin="16,20,16,8" HeightRequest="64" RowSpacing="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="64" WidthRequest="64" CornerRadius="32" Grid.RowSpan="2"
+                               BackgroundColor="{StaticResource defaultFoggyColor}" Padding="0" IsClippedToBounds="True">
+
+                            <Image x:Name="imgProfilePicture" HorizontalOptions="CenterAndExpand" Aspect="AspectFill"
+                                   VerticalOptions="FillAndExpand"></Image>
+                            
+                            
+                        </Frame>
+                        <StackLayout Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Spacing="0">
+
+                            <Label  Text="Ulaş" x:Name="lblName" TextColor="{StaticResource defaultBlackColor}"
+                               FontSize="22" FontFamily="CustomMedium" VerticalOptions="End"></Label>
+                            <Label  Text="Profili gör" x:Name="lblShowProfile" TextColor="{StaticResource defaultFoggyColor}"
+                               FontSize="14" FontFamily="CustomMedium" VerticalOptions="Start">
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="tapGoProife" Tapped="tapGoProife_Tapped"></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                                
+                            </Label>
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" 
+                                     Spacing="0" Orientation="Horizontal">
+
+                            <StackLayout Margin="0,0,24,0" Spacing="0">
+                                <Label  Text="16" x:Name="lblVisits" TextColor="{StaticResource defaultBlackColor}"
+                               FontSize="20" FontFamily="CustomMedium" VerticalOptions="End"></Label>
+                                <Label  Text="Ziyaret" TextColor="{StaticResource defaultFoggyColor}"
+                               FontSize="11" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                            </StackLayout>
+                            <StackLayout  Spacing="0">
+
+                                <Label  Text="8" x:Name="lblReviews" TextColor="{StaticResource defaultBlackColor}"
+                               FontSize="20" FontFamily="CustomMedium" VerticalOptions="End"></Label>
+                                <Label  Text="Puanlama" TextColor="{StaticResource defaultFoggyColor}"
+                               FontSize="11" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                            </StackLayout>
+
+                        </StackLayout>
+
+
+
+
+                    </Grid>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="16,8,16,8" Opacity="0.25" ></BoxView>
+                    <Grid Margin="16,8,16,8" HorizontalOptions="StartAndExpand" ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="0">
+                            <Label VerticalOptions="Center" TextColor="{StaticResource defaultRedColor}" FontFamily="{StaticResource FontAwesomeLight}"
+                               FontSize="42" Text="store"></Label>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="Center" Spacing="0" Grid.Column="1">
+
+                            <Label  Text="İşletmeni Yeaty'e taşı" TextColor="{StaticResource defaultBlackColor}"
+                               FontSize="16" FontFamily="CustomBold" VerticalOptions="End"></Label>
+                            <Label  Text="Yeaty'e işletmeni nasıl kaydedip kazancını arttırabileceğin hakkında bilgi sahibi ol" TextColor="{StaticResource defaultFoggyColor}"
+                               FontSize="10" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                            
+                        </StackLayout>
+                        
+                        
+                    </Grid>
+                    
+                    <StackLayout Margin="16,18,16,4" Orientation="Horizontal">
+
+
+                        <Label  Text="Bilgilerimi düzenle" TextColor="{StaticResource defaultFoggyColor}" 
+                               FontSize="16" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                        <Label Text="pencil-alt" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="EndAndExpand"></Label>
+
+                    </StackLayout>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="16,6,16,6" Opacity="0.2" ></BoxView>
+                    <StackLayout Margin="16,6,16,6" Orientation="Horizontal">
+
+
+                        <Label  Text="Favori mekanlarım" TextColor="{StaticResource defaultFoggyColor}" 
+                               FontSize="16" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                        <Label Text="heart" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="EndAndExpand"></Label>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapFavRestaurants" Tapped="tapFavRestaurants_Tapped"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="16,6,16,6" Opacity="0.2" ></BoxView>
+                    <StackLayout Margin="16,6,16,6" Orientation="Horizontal">
+
+
+                        <Label  Text="Bildirimlerim" TextColor="{StaticResource defaultFoggyColor}" 
+                               FontSize="16" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                        <Label Text="bell" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="EndAndExpand"></Label>
+
+                    </StackLayout>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="16,6,16,6" Opacity="0.2" ></BoxView>
+                    <StackLayout Margin="16,6,16,6" Orientation="Horizontal">
+
+
+                        <Label  Text="Favori ürünlerim" TextColor="{StaticResource defaultFoggyColor}" 
+                               FontSize="16" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                        <Label Text="coffee" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="EndAndExpand"></Label>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapFavmenuItems" Tapped="tapFavmenuItems_Tapped"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="16,6,16,6" Opacity="0.2" ></BoxView>
+                    <StackLayout Margin="16,6,16,6" Orientation="Horizontal">
+
+
+                        <Label  Text="Kullanıcı ve gizlilik sözleşmesi" TextColor="{StaticResource defaultFoggyColor}" 
+                               FontSize="16" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                        <Label Text="file-contract" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="EndAndExpand"></Label>
+
+                    </StackLayout>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="16,6,16,6" Opacity="0.2" ></BoxView>
+                    <StackLayout Margin="16,6,16,6" Orientation="Horizontal">
+
+
+                        <Label  Text="Yeaty işletme kaydı" TextColor="{StaticResource defaultFoggyColor}" 
+                               FontSize="16" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                        <Label Text="store" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="EndAndExpand"></Label>
+
+                    </StackLayout>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="16,6,16,6" Opacity="0.2" ></BoxView>
+                    <StackLayout Margin="16,6,16,6" Orientation="Horizontal">
+
+
+                        <Label  Text="Yardım al" TextColor="{StaticResource defaultFoggyColor}" 
+                               FontSize="16" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                        <Label Text="question" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="EndAndExpand"></Label>
+
+                    </StackLayout>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="16,6,16,6" Opacity="0.2" ></BoxView>
+                    <StackLayout Margin="16,6,16,6" Orientation="Horizontal">
+
+
+                        <Label  Text="Bizi değerlendir" TextColor="{StaticResource defaultFoggyColor}" 
+                               FontSize="16" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                        <Label Text="comments" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="EndAndExpand"></Label>
+
+                    </StackLayout>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="{StaticResource defaultFoggyColor}" VerticalOptions="EndAndExpand"
+                         Margin="16,6,16,6" Opacity="0.2" ></BoxView>
+                    <StackLayout Margin="16,6,16,6" Orientation="Horizontal">
+
+
+                        <Label  Text="Çıkış yap" TextColor="{StaticResource defaultFoggyColor}" 
+                               FontSize="16" FontFamily="CustomMedium" VerticalOptions="Start"></Label>
+                        <Label Text="sign-out-alt" FontFamily="{StaticResource FontAwesomeLight}" FontSize="18" 
+                               TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="EndAndExpand"></Label>
+
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapSignOut" Tapped="tapSignOut_Tapped"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+
+
+                </StackLayout>
+
+            </ScrollView>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

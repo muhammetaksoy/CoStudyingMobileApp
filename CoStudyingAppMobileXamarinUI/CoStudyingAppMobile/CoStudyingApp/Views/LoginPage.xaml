@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:custom="clr-namespace:YeatyAppMobile.CustomControls"
+             x:Class="YeatyAppMobile.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="14,24,14,16" x:Name="stackNavigation">
+
+                <Frame x:Name="frameBackButton" BackgroundColor="Transparent" Padding="6" CornerRadius="3" HorizontalOptions="Start">
+
+
+                    <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left"
+                           FontSize="22" TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="Center"
+                           VerticalOptions="Center"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+
+                </Frame>
+
+            </StackLayout>
+
+            <Label FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="22"
+                               x:Name="lblHeaderSection1"
+                   Margin="12,0,16,6"
+                           Text="Giriş yap" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+
+
+
+            </Label>
+
+            <Label FontFamily="CustomMedium" TextColor="{StaticResource defaultFoggyColor}" FontSize="14"
+                               x:Name="lblHeaderSection2"
+                   Margin="12,0,16,16"
+                           Text="Hemen hesabına giriş yap ve Yeaty ayrıcalıklarından faydalanmaya devam et" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+
+
+
+            </Label>
+
+            <StackLayout x:Name="stackInfos" Spacing="10" Margin="12,10,12,0" HorizontalOptions="FillAndExpand"
+                         >
+
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,6" Margin="0" IsClippedToBounds="True">
+
+                    <custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}" 
+                                   Placeholder="Kullanıcı adı" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   FontSize="14" x:Name="entryUsername"
+                                   Completed="entryUsername_Completed"
+                                   TextChanged="entryUsername_TextChanged"
+                                   ></custom:XEntry>
+
+                </Frame>
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,6" Margin="0" IsClippedToBounds="True">
+
+                    <custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}" 
+                                   Placeholder="Şifre" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   TextChanged="entryPassword_TextChanged" IsPassword="True"
+                                   FontSize="14" x:Name="entryPassword"
+                                   ></custom:XEntry>
+
+                </Frame>
+
+                <Label Text="Şifremi unuttum" TextColor="{StaticResource defaultBlackColor}" FontFamily="CustomMedium"
+                       FontSize="12.5" Margin="0,6,0,0" >
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapForgotPassword" Tapped="tapForgotPassword_Tapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                    
+                </Label>
+
+
+            </StackLayout>
+
+            <StackLayout x:Name="stackProceed" VerticalOptions="EndAndExpand" Margin="12">
+
+
+                <Frame HorizontalOptions="FillAndExpand" Padding="0,16,0,16" Margin="0" CornerRadius="5" 
+                       IsClippedToBounds="True" 
+                           HasShadow="False" BackgroundColor="{StaticResource defaultBlackColor}" Opacity="0.3" 
+                      x:Name="frameLogin">
+
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Giriş yap" FontSize="14" TextColor="White"
+                               FontFamily="CustomBold"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapProceed" Tapped="tapProceed_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+
+
+                </Frame>
+
+            </StackLayout>
+
+            <!--<StackLayout x:Name="stackSocialLogin" Margin="12,16,12,16" HorizontalOptions="FillAndExpand">
+
+
+                <Frame x:Name="frameGoogleLogin" CornerRadius="3" HorizontalOptions="FillAndExpand" Padding="0,8,0,8"
+                       IsClippedToBounds="True" BackgroundColor="Transparent" BorderColor="{StaticResource defaultBlackColor}">
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" VerticalOptions="Center">
+
+                        <Label Text="google" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="14" ></Label>
+                        <Label Text=" Google ile devam et" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="14" ></Label>
+                        
+                    </StackLayout>
+                    
+                    
+                </Frame>
+                
+            </StackLayout>-->
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

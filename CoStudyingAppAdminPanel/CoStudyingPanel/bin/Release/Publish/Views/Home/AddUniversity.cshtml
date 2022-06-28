@@ -1,0 +1,54 @@
+﻿@using CoStudyingPanel.Models
+
+@model University
+
+@{
+    DatabaseContext db = new DatabaseContext();
+    ViewBag.Title = "Üniversite Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    User user = Session["login"] as User;
+    int i = 1;
+
+}
+<div class="az-content-body">
+    <div class="az-content-breadcrumb">
+        <span>Üniversiteler</span>
+        <span>Üniversite Ekle</span>
+    </div>
+    <h2 class="az-content-title"> Üniversite Ekle &nbsp; <i class="typcn typcn-plus"></i></h2>
+    <div class="az-content-label mg-b-5">Üniversite BİLGİLERİ</div>
+    <p class="mg-b-20 col-md-12" style="font-weight:bold;">Lütfen Tüm '<span class="tx-danger">*</span>' Olan Zorunlu Alanları Doğru Bir Şekilde Eksiksiz Doldurunuz!</p>
+    @using (Html.BeginForm("AddUniversity", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+<div class="pd-30 pd-sm-40 bg-gray-200">
+    <div class="row row--md align-items-center mg-b-20">
+        <div class="col-md-2" style="padding-top:10px; margin-left:15px;">
+            <label class="form-label mg-b-0">Üniversite Adı:<span class="tx-danger">*</span></label>
+        </div>
+        <div class="col-md-5 mg-t-5 mg-md-t-0" style="padding-top:10px;">
+            @Html.TextBoxFor(model => model.UniversityName, new { @class = "form-control", type = "text", placeholder = "İstanbul Üniversitesi, 9 Eylül Üniversitesi....", @required = "required" })
+        </div>
+
+    </div>
+    <div class="row row--md align-items-center mg-b-20">
+        <div class="col-md-2" style="padding-top:10px; margin-left:15px;">
+            <label class="form-label mg-b-0">Şehir:<span class="tx-danger">*</span></label>
+        </div>
+        <div class="col-md-5 mg-t-5 mg-md-t-0" style="padding-top:10px;">
+            @Html.TextBoxFor(model => model.City, new { @class = "form-control", type = "text", placeholder = "İstanbul, Ankara, İzmir...", @required = "required" })
+        </div>
+    </div>
+    <row style="position:sticky; left:1100px;">
+        <button class="btn btn-az-secondary pd-x-30 mg-r-5" type="submit" style="margin-bottom:5px;"><i class="fa fa-save"></i>Kaydet</button>
+        <button class="btn btn-dark pd-x-30" type="reset" style="margin-bottom:5px;"><i class="fa fa-backspace"></i> Sıfırla</button>
+        <a href="/Home/Index" class="btn btn-warning pd-x-30" style="margin-bottom:5px;"><i class="fa fa-arrow-circle-left"></i>Geri</a>
+    </row>
+    <div class="az-signin-footer" style="color: #ed3038;">
+        @Html.ValidationSummary(true)
+
+    </div>
+</div>
+    }
+    <br>
+</div>

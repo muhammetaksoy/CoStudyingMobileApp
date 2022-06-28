@@ -1,0 +1,148 @@
+﻿@using CoStudyingPanel.Models
+
+@model SearchResult
+
+@{
+    DatabaseContext db = new DatabaseContext();
+    ViewBag.Title = Model.text + " Arama Sonuçları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    int i = 1;
+    int a = 1;
+}
+
+<div class="az-content-body">
+    <div class="az-content-breadcrumb">
+        <span>Arama</span>
+        <span>Arama Sonuçları</span>
+    </div>
+    <h2 class="az-content-title">@Model.text Üniversite Arama Sonuçları &nbsp; <i class="fas fa-search"></i></h2>
+    @if (Model.Universities.Count != 0)
+    {
+<div class="table-responsive">
+    <table class="table table-hover mg-b-0">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Üniversite Adı</th>
+                <th>Şehir</th>
+                <th>Eklenme TARİHİ</th>
+                <th>&nbsp;</th>
+                <th>İŞLEMLER</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (University item in Model.Universities)
+            {
+                <tr>
+
+                    <th scope="row">@(i++)</th>
+
+                    <td>
+                        @item.UniversityName
+
+                    </td>
+                    <td>@item.City</td>
+                    <td>@CustomTime.GetDateTimeString(item.CreatedOn)</td>
+                    <td>
+                        <a href="/Home/EditUniversity/@item.Id" class="btn btn-with-icon btn-az-secondary btn-rounded"><i class="typcn typcn-edit"></i>&nbsp; Düzenle</a>
+                    </td>
+                    <td>
+                        @{
+                            string warning = "warning" + i;
+                        }
+
+                        <a href="" class="btn btn-with-icon btn-danger btn-rounded" data-toggle="modal" data-target="#@warning"><i class="typcn typcn-delete"></i>&nbsp; Kaldır</a>
+                        <div id="@warning" class="modal fade effect-just-me">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content modal-content-demo">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title">Uyarı Mesajı!</h6>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Yapmak Üzere Olduğunuz İşlem Geri Alınamaz!</h6>
+                                        <p>Üniversite Silme İşlemi Bir Kez Yapıldığında Geri Alınamaz! </p>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <a href="/Home/PassiveUniversity/@item.Id" type="button" class="btn btn-primary">Devam Et</a>
+
+                                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Geri</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+    }
+    else
+    {
+        <h3 class="tx-center" style="padding-top: 25px; color: darkred;"><i class="fa fa-times"></i>  @Model.text İle İlgili Bir Üniversite Bulunamamıştır!</h3>
+    }
+
+    <br />
+
+    <h2 class="az-content-title">@Model.text Kullanıcı Arama Sonuçları &nbsp; <i class="fas fa-search"></i></h2>
+    @if (Model.Users.Count != 0)
+    {
+<div class="table-responsive">
+    <table class="table table-hover mg-b-0">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Kullanıcı Adı</th>
+                <th>Email</th>
+                <th>Katılım Tarihi</th>
+                <th>&nbsp;</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (User item in Model.Users)
+            {
+                <tr>
+
+                    <th scope="row">@(i++)</th>
+                    <td>
+                        @item.Name (@item.Username)
+                    </td>
+                    <td>@item.Email</td>
+                    <td>@item.CreatedOn.ToShortDateString()</td>
+                    <td>
+                        <a href="/User/EditUser/@item.Id" class="btn btn-with-icon btn-az-secondary btn-rounded"><i class="typcn typcn-edit"></i>&nbsp; Düzenle</a>
+                    </td>
+                    @if (item.isActive)
+                    {
+                        <td>
+                            <a href="/User/DeactivateUser/@item.Id" class="btn btn-with-icon btn-danger btn-rounded"><i class="typcn typcn-thumbs-down"></i>&nbsp; Pasifleştir</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a href="/User/ActivateUser/@item.Id" class="btn btn-with-icon btn-success btn-rounded"><i class="typcn typcn-thumbs-up"></i>&nbsp; Aktifleştir</a>
+                        </td>
+                    }
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>
+    }
+    else
+    {
+        <h3 class="tx-center" style="padding-top: 25px; color: darkred;"><i class="fa fa-times"></i>  @Model.text İle İlgili Bir Kullanıcı Bulunamamıştır!</h3>
+    }
+
+</div>

@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                   CloseWhenBackgroundIsClicked="False"
+                   xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeatyAppMobile.Views.PopupPages.PurchaseMenuItemPopupPage">
+    <Frame Margin="0"
+           CornerRadius="3"
+           IsClippedToBounds="True"
+           HeightRequest="450"
+           WidthRequest="350"
+                 Padding="0"
+                 BackgroundColor="White"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0">
+
+            <Grid HorizontalOptions="CenterAndExpand" x:Name="stackLoading" VerticalOptions="CenterAndExpand" IsVisible="True"
+                             Padding="5" BackgroundColor="Transparent"   >
+                <lottie:AnimationView x:Name="lottieLoading" Animation="loadingCircles.json" AutoPlay="True" 
+                              HeightRequest="200" WidthRequest="200" RepeatMode="Infinite"
+                                      VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></lottie:AnimationView>
+                
+
+            </Grid>
+
+            <Grid HorizontalOptions="CenterAndExpand" x:Name="stackSuccessAnimation" VerticalOptions="CenterAndExpand" IsVisible="False"
+                             Padding="5" BackgroundColor="Transparent"   >
+                <lottie:AnimationView x:Name="lottieSuccess" Animation="successCheckAnimation1.json" AutoPlay="False" Speed="1.2"
+                              HeightRequest="300" WidthRequest="300" RepeatCount="0" OnFinishedAnimation="lottieSuccess_OnFinishedAnimation"
+                                      VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></lottie:AnimationView>
+
+
+            </Grid>
+
+            <StackLayout x:Name="stackNotEnoughBalance" Margin="14,20,14,20" IsVisible="False" Opacity="0"
+                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
+
+                    <Frame HeightRequest="48" WidthRequest="48" CornerRadius="24" 
+                               IsClippedToBounds="True" HorizontalOptions="Start" Padding="0"
+                               BackgroundColor="Transparent" >
+
+                        <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left" TextColor="{StaticResource defaultFoggyColor}"
+                                   HorizontalOptions="Center" VerticalOptions="Center" Margin="0,4,0,0" FontSize="20" ></Label>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer  Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+
+
+                </StackLayout>
+                <Label Text="Yetersiz Yeaty bakiyesi" TextColor="{StaticResource defaultBlackColor}" FontSize="16"
+                       Margin="0,10,0,6" FontFamily="CustomBold"
+                       ></Label>
+                <Label TextColor="{StaticResource defaultBlackColor}" 
+                       Margin="0,0,0,6" FontFamily="CustomBold" LineHeight="1.1"
+                       >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Bu ürünü almak için " FontFamily="CustomMedium" TextColor="{StaticResource defaultFoggyColor}" FontSize="14"></Span>
+                            <Span x:Name="lblNeededYeatyPoints" FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="14"></Span>
+                            <Span  FontSize="14" Text=" yeaty kredisine daha ihtiyacın var. Bakiyeni, Yeaty ile anlaşmalı mekanlarda yalnızca QR kod okutarak alacağın geri ödemeler ile arttırabilirsin. Yeterince yeaty bakiyen biriktiğinde Yeaty ürünlerini uygulama üzerinden biriken puanlarını kullanarak alır, mekana gidince ekstra ücret ödemezsin. Yeaty bakiye durumunu " FontFamily="CustomMedium" TextColor="{StaticResource defaultFoggyColor}"></Span>
+                            <Span Text="Cüzdanım" FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="14"></Span>
+                            <Span Text=" sekmesinden kontrol edebilirsin." FontFamily="CustomMedium" TextColor="{StaticResource defaultFoggyColor}"  FontSize="14"></Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    
+
+                </Label>
+                
+            </StackLayout>
+
+            <StackLayout x:Name="stackCompleted" Margin="14,12,14,12" IsVisible="False"
+                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
+
+                    <Frame HeightRequest="42" WidthRequest="42" CornerRadius="21" 
+                               IsClippedToBounds="True" HorizontalOptions="Start" Padding="0"
+                               BackgroundColor="Transparent" >
+
+                        <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left" TextColor="{StaticResource defaultFoggyColor}"
+                                   HorizontalOptions="Center" VerticalOptions="Center" Margin="0,4,0,0" FontSize="16" ></Label>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer  Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+
+
+                </StackLayout>
+                <Label Text="Yeaty puanları ile ödendi." TextColor="{StaticResource defaultBlackColor}" FontSize="16"
+                       Margin="0,10,0,6" Opacity="1"  FontFamily="CustomBold"></Label>
+                <Label TextColor="{StaticResource defaultBlackColor}" FontSize="14" Opacity="0"
+                       Margin="0,0,0,6" FontFamily="CustomBold" x:Name="lblTextSuccess"
+                       >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontSize="13" Text="Harika! Yeaty puanların ile ürün alma işlemini tamamladın. Artık tek yapman gereken aldığın ürün için QR Kod oluşturarak mekana gittiğinde yetkiliye göstermek. İstersen QR kodu şimdi oluşturabilir, istersen daha sonraya saklayabilirsin. Daha sonra QR kod oluşturmak için " FontFamily="CustomMedium" TextColor="{StaticResource defaultFoggyColor}"></Span>
+                            <Span FontSize="13" Text=" Kodlarım" FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}"></Span>
+                            <Span FontSize="13" Text=" sekmesini ziyaret etmen yeterli." FontFamily="CustomMedium" TextColor="{StaticResource defaultFoggyColor}"></Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+
+
+                </Label>
+
+                <Grid Margin="0,14,0,10" HorizontalOptions="FillAndExpand" ColumnSpacing="6" x:Name="gridImageMenuItem"
+                      Opacity="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame HeightRequest="60" WidthRequest="60" Grid.Column="0"  IsClippedToBounds="True"
+                           CornerRadius="6" Padding="0" BackgroundColor="Transparent">
+                        <Image x:Name="imgCompletedItemImage" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                               Aspect="AspectFill" ></Image>
+                    </Frame>
+                    <StackLayout Grid.Column="1" HorizontalOptions="Start" Spacing="0" VerticalOptions="Center">
+
+                        <Label x:Name="lblCompletedItemName" FontFamily="CustomBold" FontSize="15" TextColor="{StaticResource defaultBlackColor}"></Label>
+                        <Label x:Name="lblRestaurantNameItem" FontFamily="CustomMedium" FontSize="12" TextColor="{StaticResource defaultFoggyColor}"></Label>
+                        
+                    </StackLayout>
+                    
+                    
+                </Grid>
+                
+                
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" x:Name="stackButtons" Opacity="0" >
+
+
+                    <Frame HorizontalOptions="FillAndExpand" Padding="0,12.5,0,12.5" BackgroundColor="{StaticResource defaultRedColor}"
+                           CornerRadius="4" IsClippedToBounds="True" Margin="0,0,0,4" HasShadow="False"
+                           >
+
+                        <Label Text="Şimdi QR oluştur" TextColor="{StaticResource defaultWhiteColor}" HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand" FontSize="12.5" FontFamily="CustomBold" ></Label>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="createQRNow" Tapped="createQRNow_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+                    <Frame HorizontalOptions="FillAndExpand" Padding="0,12.5,0,12.5" BackgroundColor="Transparent"
+                           BorderColor="{StaticResource defaultFoggyColor}"
+                           CornerRadius="4" IsClippedToBounds="True" Margin="0,0,0,0"  HasShadow="False"
+                           >
+
+                        <Label Text="Daha sonra" TextColor="{StaticResource defaultFoggyColor}" HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand" FontSize="12.5" FontFamily="CustomBold"></Label>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="createLater" Tapped="createLater_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+
+
+                </StackLayout>
+               
+                <!--<Frame Margin="0,12,0,10" HorizontalOptions="FillAndExpand" VerticalOptions="Start"   x:Name="frameCompletedItem"
+                       HeightRequest="80" BackgroundColor="{StaticResource defaultWhiteColor}" BorderColor="{StaticResource defaultShadedWhiteColor}"
+                       Padding="0" CornerRadius="3" IsClippedToBounds="True" IsVisible="False" Opacity="0" >
+
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" ColumnSpacing="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Image x:Name="imgSelectedMenuItemImage" VerticalOptions="FillAndExpand" WidthRequest="100" 
+                               Aspect="AspectFill" Grid.Column="0"></Image>
+                        <Frame CornerRadius="6" Padding="4,3,4,3" BackgroundColor="Transparent" BorderColor="Transparent" 
+                               Grid.Column="3" Margin="0,0,8,0" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand">
+
+                            <Label x:Name="lblCancel" Text="times" FontFamily="{StaticResource FontAwesomeLight}"
+                                   TextColor="{StaticResource defaultFoggyColor}" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="tapCancelItem" Tapped="tapCancelItem_Tapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+
+                        </Frame>
+                        <StackLayout Grid.Column="2" VerticalOptions="CenterAndExpand" Spacing="0" >
+                            <Label Text="Yeaty puanların ile" FontSize="10" TextColor="{StaticResource defaultFoggyColor}"
+                                   FontFamily="CustomMedium" HorizontalOptions="Center"
+                                   ></Label>
+                            <Frame CornerRadius="3" Margin="0"  Padding="10,8,10,8" IsClippedToBounds="True"
+                               BackgroundColor="{StaticResource defaultLightRedColor}">
+                                <Label Text="Şimdi al" FontSize="12" TextColor="{StaticResource defaultWhiteColor}"
+                                   FontFamily="CustomBold" HorizontalOptions="Center"
+                                   ></Label>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="tapOpenMenuItem" Tapped="tapOpenMenuItem_Tapped"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Spacing="0">
+
+                            <Label Text="Seçili ürün" FontSize="12" TextColor="{StaticResource defaultFoggyColor}"
+                                   FontFamily="CustomMedium"
+                                   ></Label>
+                            <Label x:Name="lblSelectedMenuItemNameAndPrice" FontSize="14" TextColor="{StaticResource defaultBlackColor}"
+                                   FontFamily="CustomBold"
+                                   ></Label>
+                        </StackLayout>
+
+
+                    </Grid>
+
+
+                </Frame>-->
+
+            </StackLayout>
+
+            
+
+            <StackLayout Margin="0" IsVisible="False" x:Name="stackMainQR" Opacity="0"
+                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+               
+                <StackLayout  Margin="12,4,12,0" VerticalOptions="StartAndExpand">
+                    
+
+                    <StackLayout x:Name="stackQR" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Margin="0,6,0,20">
+                        <StackLayout HorizontalOptions="Start" VerticalOptions="Start" Margin="0">
+
+                            <Frame HeightRequest="42" WidthRequest="42" CornerRadius="21" 
+                               IsClippedToBounds="True" HorizontalOptions="Start" Padding="0"
+                               BackgroundColor="Transparent" >
+
+                                <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left" TextColor="{StaticResource defaultFoggyColor}"
+                                   HorizontalOptions="Center" VerticalOptions="Center" Margin="0,4,0,0" FontSize="16" ></Label>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="tapBack1" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+
+                            </Frame>
+
+
+                        </StackLayout>
+                        <Label Text="Qr kodu yetkiliye gösterin" TextColor="{StaticResource defaultBlackColor}" FontSize="14"
+                           FontFamily="CustomMedium" HorizontalTextAlignment="Center"
+                           HorizontalOptions="Center" Margin="0"></Label>
+                        <Label x:Name="lblQRSubText" Text="" HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource defaultFoggyColor}" FontSize="11.5" FontFamily="CustomMedium"
+                           HorizontalOptions="StartAndExpand" Margin="0,0,0,2"></Label>
+
+
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="12,0,12,16" Spacing="2">
+                    <Label Text="Kalan süre: " FontSize="14" HorizontalOptions="Center" TextColor="{StaticResource defaultBlackColor}"
+                           FontFamily="CustomMedium" x:Name="lblTimerSituation"></Label>
+                    <Frame CornerRadius="3" BackgroundColor="{StaticResource defaultLightRedColor}" IsClippedToBounds="True" HorizontalOptions="Center"
+                           Padding="28,8,28,8" HasShadow="False" Opacity="1" IsVisible="False" x:Name="frameNewQr">
+
+
+                        <Label Text="Yeni kod gönder" FontFamily="CustomBold" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center"
+                               TextColor="{StaticResource defaultWhiteColor}"
+                               ></Label>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapNewQR" Tapped="tapNewQR_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame CornerRadius="3" BackgroundColor="Transparent" IsClippedToBounds="True" HorizontalOptions="Center"
+                           x:Name="frameTimer" WidthRequest="100"
+                           Padding="0,6,0,6" HasShadow="False" Opacity="1" BorderColor="Transparent">
+
+
+                        <Label Text="00:00" FontFamily="CustomBold" FontSize="12.5" CharacterSpacing="1.3"
+                                x:Name="lblTimer" HorizontalOptions="Center" VerticalOptions="Center"
+                               TextColor="{StaticResource defaultLightRedColor}"
+                               ></Label>
+                    </Frame>
+
+                </StackLayout>
+
+
+
+            </StackLayout>
+
+
+
+
+
+        </StackLayout>
+
+
+    </Frame>
+</pages:PopupPage>

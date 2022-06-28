@@ -1,0 +1,97 @@
+﻿@using CoStudyingPanel.Models; a
+
+@model User
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta property="description" content="CoStudy Admin Kontrol Paneli">
+
+    <title>CoStudy'e' Hoş Geldiniz!</title>
+
+    <link href="/lib/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="/lib/typicons.font/typicons.css" rel="stylesheet">
+    <link href="/lib/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/azia.css">
+    <link rel="stylesheet" href="~/css/Custom.css">
+    <link rel="shortcut icon" href="~/images/c.png">
+    <link rel="apple-touch-icon" href="~/images/c.png">
+
+    @{
+        Layout = null;
+
+    }
+
+    <style>
+
+        body {
+            background-image: linear-gradient(to right top, #ed3938, #b12938, #751f2f, #3c161f, #000000);
+        }
+
+        .validation-summary-errors ul {
+            list-style-type: none;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+            .validation-summary-errors ul li {
+                border: 0px;
+                font-weight: bold;
+                border-style: solid;
+                border-bottom-width: 2px;
+                border-bottom-color: #e3e3e3;
+                padding-bottom: 4px;
+                padding-top: 4px;
+                text-align: center;
+            }
+    </style>
+    <link rel="shortcut icon" href="~/img/sembol.png">
+    <link rel="apple-touch-icon" href="~/img/sembol.png">
+
+
+</head>
+<body class="az-body">
+
+    <div class="az-signin-wrapper">
+        @using (Html.BeginForm("Login", "Home"))
+        {
+            <div class="az-card-signin" style="background-color:whitesmoke; border-radius:25px;">
+                <h1 class="az-logo" style="color:#ed3938;">CoStudy</h1>
+                <div class="az-signin-header">
+                    <h2>Hoş Geldiniz!</h2>
+                    <h4>Lütfen giriş yapınız</h4>
+                    <div class="form-group">
+                        <label>Kullanıcı Adı</label>
+                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", type = "text", placeholder = "Username", id = "email", @required = "required" })
+                    </div>
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password", placeholder = "*********", id = "password", @required = "required" })
+                    </div>
+                    <button id="login" class="btn btn-block yeatybutton" type="submit">Giriş Yap</button>
+                    <br />
+                </div>
+                <div class="az-signin-footer" style="color: #ed3038;">
+                    @Html.ValidationSummary(true)
+
+                </div>
+            </div>
+        }
+    </div>
+
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/ionicons/ionicons.js"></script>
+    <script src="/lib/select2/js/select2.min.js"></script>
+    <script src="/lib/parsleyjs/parsley.min.js"></script>
+
+
+    <script src="/js/azia.js"></script>
+</body>
+</html>

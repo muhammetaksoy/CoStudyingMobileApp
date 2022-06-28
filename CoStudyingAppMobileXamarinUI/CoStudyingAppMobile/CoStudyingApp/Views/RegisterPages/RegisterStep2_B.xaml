@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:YeatyAppMobile.CustomControls"
+             x:Class="YeatyAppMobile.Views.RegisterPages.RegisterStep2_B">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="14,24,14,16" x:Name="stackNavigation">
+
+                <Frame x:Name="frameBackButton" BackgroundColor="Transparent" Padding="6" CornerRadius="3" HorizontalOptions="Start">
+
+
+                    <Label FontFamily="{StaticResource FontAwesomeLight}" Text="arrow-left"
+                           FontSize="22" TextColor="{StaticResource defaultBlackColor}" HorizontalOptions="Center"
+                           VerticalOptions="Center"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+
+                </Frame>
+
+            </StackLayout>
+
+            <Label FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="14"
+                               x:Name="lblHeaderSection1"
+                   Margin="12,0,16,4"
+                           Text="Hangi okuldasın?" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+
+
+            </Label>
+
+            <StackLayout x:Name="stackInfos" Spacing="10" Margin="12,10,12,0" HorizontalOptions="FillAndExpand"
+                         >
+
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,8" Margin="0" IsClippedToBounds="True">
+
+                    <Picker x:Name="pickerUni" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"  
+                            SelectedIndexChanged="pickerUni_SelectedIndexChanged"
+                            FontFamily="CustomMedium" Title="Üniversite seçin" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Picker>
+
+                </Frame>
+
+                
+            </StackLayout>
+
+            <Label FontFamily="CustomBold" TextColor="{StaticResource defaultBlackColor}" FontSize="14"
+                               x:Name="lblHeaderSection2"
+                   Margin="12,12,16,4"
+                           Text="Fakülte ve bölümünü seç" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
+
+
+            </Label>
+
+            <StackLayout x:Name="stackInfos2" Spacing="10" Margin="12,10,12,0" HorizontalOptions="FillAndExpand"
+                         >
+
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,8" Margin="0" IsClippedToBounds="True">
+
+                    <!--<custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}" 
+                                   Placeholder="Üniversite adı" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   FontSize="14" x:Name="entrySchool"
+                                   Completed="entrySchool_Completed"                                   
+                                   ></custom:XEntry>-->
+                    <Picker x:Name="pickerFaculty" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"  
+                            SelectedIndexChanged="pickerFaculty_SelectedIndexChanged"
+                            FontFamily="CustomMedium" Title="Fakülte seçin" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Picker> 
+
+                </Frame>
+
+                <Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,8" Margin="0" IsClippedToBounds="True">
+
+                    <!--<custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}" 
+                                   Placeholder="Üniversite adı" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   FontSize="14" x:Name="entrySchool"
+                                   Completed="entrySchool_Completed"                                   
+                                   ></custom:XEntry>-->
+                    <Picker x:Name="pickerDepartment" Title="Bölüm seçin"
+                            SelectedIndexChanged="pickerDepartment_SelectedIndexChanged"
+                            BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"                               
+                            FontFamily="CustomMedium" FontSize="14" TextColor="{StaticResource defaultBlackColor}"></Picker>
+
+                </Frame>
+
+                <!--<Frame BackgroundColor="{StaticResource defaultShadedWhiteColor}" CornerRadius="3"
+                       Padding="8,6,8,8" Margin="0" IsClippedToBounds="True">
+
+                    <custom:XEntry HorizontalOptions="FillAndExpand" FontFamily="CustomMedium"
+                                   TextColor="{StaticResource defaultBlackColor}" 
+                                   Placeholder="Üniversite adı" PlaceholderColor="{StaticResource defaultFoggyColor}"
+                                   FontSize="14" x:Name="entrySchool"
+                                   Completed="entrySchool_Completed"                                   
+                                   ></custom:XEntry>
+
+                </Frame>-->
+
+
+            </StackLayout>
+
+            <StackLayout x:Name="stackProceed" VerticalOptions="EndAndExpand" Margin="12">
+
+
+                <Frame HorizontalOptions="FillAndExpand" Padding="0,16,0,16" Margin="0" CornerRadius="5" 
+                       IsClippedToBounds="True" 
+                           HasShadow="False" BackgroundColor="{StaticResource defaultBlackColor}" Opacity="0.3" 
+                      x:Name="frameProceed">
+
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Devam et" FontSize="14" TextColor="White"
+                               FontFamily="CustomBold"></Label>
+
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapProceed" Tapped="tapProceed_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+
+
+                </Frame>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

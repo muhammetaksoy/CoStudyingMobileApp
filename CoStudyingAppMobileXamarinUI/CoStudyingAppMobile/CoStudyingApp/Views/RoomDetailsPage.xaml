@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YeatyAppMobile.Views.RoomDetailsPage">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <CollectionView x:Name="listViewMembers" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="12,0,16,0" 
+                      ItemsSource="{Binding .}" SelectionChanged="listViewMembers_SelectionChanged" BackgroundColor="Transparent">
+
+                <CollectionView.Header>
+                    <StackLayout>
+
+                        <StackLayout x:Name="stackHeader" Margin="0,16,0,10" Orientation="Horizontal" Spacing="24">
+
+                            <Frame Padding="6,2,2,2" HorizontalOptions="Start" BackgroundColor="Transparent" CornerRadius="3">
+
+                                <Label Text="arrow-left" FontFamily="{StaticResource FontAwesomeLight}" FontSize="20" 
+                               TextColor="{StaticResource defaultBlackColor}"></Label>
+
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="tapBack" Tapped="tapBack_Tapped"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+
+                            </Frame>
+                            <Label Text="" x:Name="lblGroupName" TextColor="{StaticResource defaultBlackColor}" FontSize="16" FontFamily="CustomMedium"
+                           HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0"></Label>
+                            
+                            
+
+
+
+
+                        </StackLayout>
+
+                        <StackLayout x:Name="stackGroupDetails" >
+                            <Label x:Name="lblGroupDetailsTextHeader" IsVisible="False"
+                                   Text="Grup Açıklaması" TextColor="{StaticResource defaultFoggyColor}" FontSize="14"
+                                FontFamily="CustomBold" Margin="0,6,0,2"></Label>
+                            <Label x:Name="lblGroupDetails"   IsVisible="False"
+                                   Text="" TextColor="{StaticResource defaultFoggyColor}" FontSize="16"
+                                FontFamily="CustomMedium" Margin="0,0,0,12"></Label>
+
+                            <Label 
+                                   Text="İlgili Bölüm" TextColor="{StaticResource defaultFoggyColor}" FontSize="14"
+                                FontFamily="CustomBold" Margin="0,6,0,2"></Label>
+                            <Label x:Name="lblRoomDepartment" 
+                                   Text="" TextColor="{StaticResource defaultFoggyColor}" FontSize="16"
+                                FontFamily="CustomMedium" Margin="0,0,0,12"></Label>
+
+                            <Label 
+                                   Text="Çalışma grubu erişim kodu" TextColor="{StaticResource defaultFoggyColor}" FontSize="14"
+                                FontFamily="CustomBold" Margin="0,6,0,2"></Label>
+                            <Label x:Name="lblGroupAccesCode" 
+                                   Text="" TextColor="{StaticResource defaultFoggyColor}" FontSize="16"
+                                FontFamily="CustomMedium" Margin="0,0,0,12"></Label>
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" x:Name="stack" Margin="0,10,0,10">
+
+                                <!--<Label x:Name="lblSendInvite" TextColor="{StaticResource defaultBlackColor}" IsVisible="False">
+
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="arrow-right" FontSize="16" FontFamily="{StaticResource FontAwesomeSolid}" ></Span>
+                                            <Span Text=" " FontSize="14"  ></Span>
+                                            <Span Text=" Katılma isteği gönder" FontSize="14" FontFamily="CustomBold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tapSendInvite" Tapped="tapSendInvite_Tapped"></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+                                    
+                                </Label>-->
+
+                                <!--<Label x:Name="lblInviteSent" TextColor="#f0dc07" IsVisible="False">
+
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="clock" FontSize="16" FontFamily="{StaticResource FontAwesomeSolid}" ></Span>
+                                            <Span Text=" " FontSize="14"  ></Span>
+                                            <Span Text=" İstek beklemede" FontSize="14" FontFamily="CustomBold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tapCancelInvite" Tapped="tapCancelInvite_Tapped"></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+
+                                </Label>-->
+
+                                <Label x:Name="lblJoinGroup" TextColor="{StaticResource defaultBlackColor}" IsVisible="False" >
+
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="arrow-right" FontSize="16" FontFamily="{StaticResource FontAwesomeSolid}" ></Span>
+                                            <Span Text=" " FontSize="14"  ></Span>
+                                            <Span Text=" Gruba katıl" FontSize="14" FontFamily="CustomBold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tapJoinGroup" Tapped="tapJoinGroup_Tapped"></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+
+                                </Label>
+
+                                <Label x:Name="lblLeaveGroup" TextColor="{StaticResource defaultRedColor}" IsVisible="False" >
+
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="arrow-left" FontSize="16" FontFamily="{StaticResource FontAwesomeSolid}" ></Span>
+                                            <Span Text=" " FontSize="14"  ></Span>
+                                            <Span Text="Gruptan ayrıl" FontSize="16" FontFamily="CustomBold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tapLeaveGroup" Tapped="tapLeaveGroup_Tapped"></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+
+                                </Label>
+
+                            </StackLayout>
+                            <StackLayout x:Name="stackMemberOptions" Margin="0,6,0,12" HorizontalOptions="FillAndExpand" IsVisible="False" Spacing="16">
+
+                                
+
+                                <Label x:Name="lblShowTasks" TextColor="{StaticResource defaultFoggyColor}" IsVisible="True" >
+
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="list" FontSize="16" FontFamily="{StaticResource FontAwesomeSolid}" ></Span>
+                                            <Span Text=" " FontSize="14"  ></Span>
+                                            <Span Text=" Görev listesi" FontSize="16" FontFamily="CustomBold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tapShowTasks" Tapped="tapShowTasks_Tapped"></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+
+                                </Label>
+
+                                <Label x:Name="lblShowMessages" TextColor="{StaticResource defaultFoggyColor}" IsVisible="True" >
+
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="comment" FontSize="16" FontFamily="{StaticResource FontAwesomeSolid}" ></Span>
+                                            <Span Text=" " FontSize="14"  ></Span>
+                                            <Span Text=" Mesaj panosunu görüntüle" FontSize="16" FontFamily="CustomBold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tapShowMessages" Tapped="tapShowMessages_Tapped"></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+
+                                </Label>
+
+                                
+
+                                <StackLayout x:Name="stackEditorOptions" IsVisible="False" Spacing="16" Margin="0,4,0,12">
+                                    <Label x:Name="lblShowAnnouncements" TextColor="{StaticResource defaultFoggyColor}" IsVisible="True" >
+
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="bullhorn" FontSize="16" FontFamily="{StaticResource FontAwesomeSolid}" ></Span>
+                                                <Span Text=" " FontSize="14"  ></Span>
+                                                <Span Text=" Duyuru ekle" FontSize="16" FontFamily="CustomBold"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="tapShowAnnouncements" Tapped="tapShowAnnouncements_Tapped"></TapGestureRecognizer>
+                                        </Label.GestureRecognizers>
+
+                                    </Label>
+                                    <Label x:Name="lblEditGroupDetails" TextColor="{StaticResource defaultFoggyColor}" IsVisible="False" >
+
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="pen" FontSize="16" FontFamily="{StaticResource FontAwesomeSolid}" ></Span>
+                                                <Span Text=" " FontSize="14"  ></Span>
+                                                <Span Text="Grup bilgilerini düzenle" FontSize="16" FontFamily="CustomBold"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="tapEditGroupDetails" Tapped="tapEditGroupDetails_Tapped"></TapGestureRecognizer>
+                                        </Label.GestureRecognizers>
+
+                                    </Label>
+
+                                    <Label x:Name="lblShowInvites" TextColor="{StaticResource defaultFoggyColor}" IsVisible="False" >
+
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="users" FontSize="16" FontFamily="{StaticResource FontAwesomeSolid}" ></Span>
+                                                <Span Text=" " FontSize="14"  ></Span>
+                                                <Span Text="Katılım isteklerini gör" FontSize="16" FontFamily="CustomBold"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="tapShowInvites" Tapped="tapShowInvites_Tapped"></TapGestureRecognizer>
+                                        </Label.GestureRecognizers>
+
+                                    </Label>
+
+                                    
+                                </StackLayout>
+
+                            </StackLayout>
+
+                            <StackLayout x:Name="stackListMembers" Margin="0,12,0,6">
+
+                                <Label x:Name="lblMembersHeader" Text="Üyeler " TextColor="{StaticResource defaultFoggyColor}" FontSize="13"
+                                FontFamily="CustomBold" Margin="0,0,0,0"></Label>
+                                
+                            </StackLayout>
+                            
+
+
+
+                        </StackLayout>
+
+                    </StackLayout>
+                    
+                </CollectionView.Header>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid HorizontalOptions="FillAndExpand" Margin="0,6,0,6" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Frame Padding="0" Margin="0" HeightRequest="50" WidthRequest="50" CornerRadius="25" IsClippedToBounds="True"
+                                   Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
+
+                                <Image Source="{Binding PhotoPath}" Aspect="AspectFill" HorizontalOptions="Center"></Image>
+                                
+                            </Frame>
+
+                            <Label  TextColor="{StaticResource defaultFoggyColor}" 
+                                   FontSize="12" Grid.Row="0" Grid.Column="1">
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding FullName}" FontFamily="CustomBold"></Span>
+                                        <Span Text=" " FontFamily="CustomBold"></Span>
+                                        <Span Text="{Binding ShieldIcon}" FontFamily="CustomMedium" ></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                
+                            </Label>
+                            
+                            <Label  TextColor="{StaticResource defaultFoggyColor}" 
+                                   FontSize="12" Grid.Row="1" Grid.Column="1">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="graduation-cap"
+                                              FontFamily="{StaticResource FontAwesomeSolid}" FontSize="12"></Span>
+                                        <Span Text=" "></Span>
+                                        <Span Text="{Binding DepartmentName}" FontFamily="CustomMedium" FontSize="12"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                
+                            </Label>
+                            
+                            
+                        </Grid>
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+                
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
